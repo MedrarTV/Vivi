@@ -182,3 +182,16 @@ def parse_path(client, path, prefix):
         r[key] = _info[key]
     return r
 
+def ignore_file(client, path):
+    '''
+        return True if file should not even be considered.
+        i.e. to filter out .DS_Store, empty files
+    '''
+    filename = os.path.basename(path)
+    if filename.startswith('._') \
+        or filename in ('.DS_Store', ) \
+        or filename.endswith('~') \
+        or not os.path.exists(path) \
+        or os.stat(path).st_size == 0:
+        return True
+    return False
