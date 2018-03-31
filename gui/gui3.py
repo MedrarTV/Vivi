@@ -56,34 +56,34 @@ def read_csvfile():
 rootdir = ''
 csv_filename = ''
 directories_lst = []
-
-## window vars
-root = tk.Tk()
-frame = tk.Frame(root)
-frame.pack()
-
-quit_button = tk.Button(frame,
-                   text="QUIT",
-                   fg="red",
-                   command=sys.exit)
-quit_button.pack(side=tk.RIGHT)
-
-directory_button = tk.Button(frame,
-                   text="1- Choose A Directory",
-                   command=choose_directory)
-directory_button.pack(side=tk.LEFT)
-
-csvfile_button = tk.Button(frame,
-                    text = "2- Choose The .csv File",
-                    command=choose_csvfile,
-                    state='disabled')
-csvfile_button.pack(side=tk.LEFT)
-
-createstructure_button = tk.Button(frame,
-                    text="3-Create the Folder Structure",
-                    command=create_dir,
-                    state='disabled')
-createstructure_button.pack(side=tk.LEFT)
-
-
-root.mainloop()
+def main(args):
+    ## window vars
+    root = tk.Tk()
+    frame = tk.Frame(root)
+    frame.pack()
+    
+    quit_button = tk.Button(frame,
+                       text="QUIT",
+                       fg="red",
+                       command=sys.exit)
+    quit_button.pack(side=tk.RIGHT)
+    
+    directory_button = tk.Button(frame,
+                       text="1- Choose A Directory",
+                       command=choose_directory)
+    directory_button.pack(side=tk.LEFT)
+    
+    csvfile_button = tk.Button(frame,
+                        text = "2- Choose The .csv File",
+                        command=choose_csvfile,
+                        state='disabled')
+    csvfile_button.pack(side=tk.LEFT)
+    
+    createstructure_button = tk.Button(frame,
+                        text="3-Create the Folder Structure",
+                        command=create_dir,
+                        state='disabled')
+    createstructure_button.pack(side=tk.LEFT)
+    
+    
+    root.mainloop()
