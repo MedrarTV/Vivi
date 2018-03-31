@@ -16,6 +16,9 @@ import unicodedata
 '''
     This is a medrar specific function, to be used in other context in their tool set 
 '''
+class structure:
+    fields = ['event_identifier','title','date','location','shooter','event_type','file_type']
+
 def Normalize (str):
     ''' Comment out what you don't need'''
 
