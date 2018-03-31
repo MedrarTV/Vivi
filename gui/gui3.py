@@ -7,6 +7,7 @@ import csv
 
 
 def choose_directory():
+    global csvfile_button
     tempdir = filedialog.askdirectory(
         parent=root,
         title='Please select a directory')
@@ -21,6 +22,7 @@ def choose_directory():
 
 def choose_csvfile():
     global csv_filename
+    global createstructure_button
     csv_filename = filedialog.askopenfilename(parent=root,
                                                 title = "Select csv file",
                                                 filetypes=(("csv files", "*.csv"),))
@@ -42,11 +44,11 @@ def create_dir():
 def read_csvfile():
     global csv_filename
     global directories_lst
+    ##### needs with clause #########
     try:
         csvFile = open(csv_filename,'rb')
         directories_lst = map(list,csv.reader(csvFile))
         csvFile.close()
-
         for row in directories_lst[1:]:
             print(row)
     except:
@@ -56,9 +58,16 @@ def read_csvfile():
 rootdir = ''
 csv_filename = ''
 directories_lst = []
+root = tk.Tk()
+csvfile_button = tk.Button()
+createstructure_button = tk.Button()
+
+
 def main(args):
-    ## window vars
-    root = tk.Tk()
+    global root
+    global csvfile_button
+    global createstructure_button
+    #root = tk.Tk()
     frame = tk.Frame(root)
     frame.pack()
     
