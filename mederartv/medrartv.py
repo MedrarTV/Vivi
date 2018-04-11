@@ -17,10 +17,10 @@ import edtf
 '''
     This is a medrar specific function, to be used in other context in their tool set 
 '''
-class structure:
-    fields = ['event_identifier','title','date','location','shooter','event_type','file_type']
+class itemStructure:
+    fields = ['medrar_item_identifier','events','date','places','shooter','event_type','file_type']
     #path_regex '^(?P<project>.+?)/(?P<artist>.+?)/(?P<workname>.+?)/.*'
-    path_regex = '^(?P<Year>.+?)-(?P<title>.+?)/(?P<month>.+?);(?P<location>.+?)/(?P<day>.+?);(?P<shooter>.+?);(?P<filetype>.+?)/.*'
+    path_regex = '^(?P<Year>.+?)-(?P<events>.+?)/(?P<Month>.+?);(?P<places>.+?)/(?P<Day>.+?);(?P<shooter>.+?);(?P<filetype>.+?)/.*'
     itemKeys = '[{
             "id": "shooter",
             "title": "Shot by",
@@ -40,6 +40,13 @@ class structure:
             "type": "string",
             "autocomplete": false,
             "columnWidth": 180
+        },
+        {
+            "id": "date",
+            "title": "Date",
+            "type": "date",
+            //edtf
+            //Year,month,day
         }]'
 
 def Normalize (str):
@@ -71,7 +78,7 @@ def parse_path(client, path, prefix):
         return:
             return None if file is ignored, dict with parsed item information otherwise
     '''
-    m = re.compile('^(?P<project>.+?)/(?P<artist>.+?)/(?P<workname>.+?)/.*').match(path)
+    m = re.compile(itemStructure.path_regex).match(path)
     #print m
     #print path
     if not m:
