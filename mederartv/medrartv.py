@@ -21,13 +21,26 @@ class structure:
     fields = ['event_identifier','title','date','location','shooter','event_type','file_type']
     #path_regex '^(?P<project>.+?)/(?P<artist>.+?)/(?P<workname>.+?)/.*'
     path_regex = '^(?P<Year>.+?)-(?P<title>.+?)/(?P<month>.+?);(?P<location>.+?)/(?P<day>.+?);(?P<shooter>.+?);(?P<filetype>.+?)/.*'
-    documentKeys = '{
+    itemKeys = '[{
             "id": "shooter",
             "title": "Shot by",
             "type": ["string"],
             "autocomplete": true,
-            "columnWidth": 180,
-        }'
+            "columnWidth": 180
+        }, {
+            "id": "places",
+            "title": "Venue",
+            "type": ["string"],,
+            "autocomplete": true,
+            "columnWidth": 180
+        },
+        {
+            "id": "events",
+            "title": "Event",
+            "type": "string",
+            "autocomplete": false,
+            "columnWidth": 180
+        }]'
 
 def Normalize (str):
     ''' Comment out what you don't need'''
