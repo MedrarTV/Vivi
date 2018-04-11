@@ -13,11 +13,21 @@ import csv
 import re
 import ox
 import unicodedata
+import edtf 
 '''
     This is a medrar specific function, to be used in other context in their tool set 
 '''
 class structure:
     fields = ['event_identifier','title','date','location','shooter','event_type','file_type']
+    #path_regex '^(?P<project>.+?)/(?P<artist>.+?)/(?P<workname>.+?)/.*'
+    path_regex = '^(?P<Year>.+?)-(?P<title>.+?)/(?P<month>.+?);(?P<location>.+?)/(?P<day>.+?);(?P<shooter>.+?);(?P<filetype>.+?)/.*'
+    documentKeys = '{
+            "id": "shooter",
+            "title": "Shot by",
+            "type": ["string"],
+            "autocomplete": true,
+            "columnWidth": 180,
+        }'
 
 def Normalize (str):
     ''' Comment out what you don't need'''
@@ -99,7 +109,7 @@ def parse_path(client, path, prefix):
                     else:
                         By="N/A"
                 except KeyError:
-                    print "Key Error in sheet"
+                    print ("Key Error in sheet")
     
     
                 try:
@@ -147,16 +157,16 @@ def parse_path(client, path, prefix):
                             #print artists
                             break
                 except UnicodeDecodeError:
-                    print dictRow
-                    print "UnicodeDecodeError on "
+                    print (dictRow)
+                    print ("UnicodeDecodeError on ")
         if match == 0:
-            print "No match found for "+info['artist'].encode('utf-8')+' '+info['workname'].encode('utf-8')
+            print ("No match found for "+info['artist'].encode('utf-8')+' '+info['workname'].encode('utf-8'))
             #print str(path)
     except OSError:
-        print "No csv file found!!"
+        print ("No csv file found!!")
     #No information found in sheet; just take it from filesystem
     if match == 0:
-        print "No match found for "+info['artist'].encode('utf-8')+' '+info['workname'].encode('utf-8')
+        print ("No match found for "+info['artist'].encode('utf-8')+' '+info['workname'].encode('utf-8'))
         By = Normalize(info['artist'])
         artists = By.split(";")
         WorkName_Normalized = Normalize(info['workname'])
