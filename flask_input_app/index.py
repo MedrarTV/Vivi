@@ -15,6 +15,16 @@ moment = Moment(app)
 
 
 class NameForm(FlaskForm):
+    #dicts
+    venues_dict = [('0', 'Medrar'), ('1', 'Mashrabeya'), ('2', 'Room')]
+    people_dict = [('0', 'Dia'), ('1', 'Allam'), ('2', 'Tawfig')]
+    inistitutions_dict = [('0', 'Ins1'), ('1', 'Ins2'), ('2', 'Ins3')]
+    videographers_dict = [('0', 'helmy'), ('1', 'Dia'), ('2', 'Mostafa')]
+    events_dict = [('0', 'Roznama'), ('1', 'CVF'), ('2', 'D-CAF')]
+    keywords_dict = [('0', 'Word1'), ('1', 'Word2'), ('2', 'Word3')]
+    title_of_edited_video_dict = [('0', 'Title1'), ('1', 'Title2'), ('2', 'Title3')]
+
+
     #the form's elements by order
     unique_id = StringField('Unique ID', validators=[Required()])
 
@@ -24,25 +34,27 @@ class NameForm(FlaskForm):
     current_date = DateField('Date', validators=[Required()])
     event_date = DateField('Event Date', validators=[Required()])
 
-    #venue = SelectField('Venue', validators=[Required()])    
-    #venue_ar = 
-    #city = 
-    #city_ar = 
+    
+    venue = SelectField('Venue',choices = venues_dict, validators=[Required()])    
+    venue_ar = StringField('Venue AR')
+    city = StringField('City')
+    city_ar = StringField('City AR')
 
-    #artists = SelectField('Artists', validators=[Required()])
-    #artists_ar =
+
+    artists = SelectField('Artists', choices=people_dict, validators=[Required()])
+    artists_ar = StringField('Artists AR')
 
     credits = StringField('Credits')
     credits_ar = StringField('Credits AR')
 
-    #curator = SelectField('Curator / Project Manager', validators=[Required()])
-    #curator_ar =
+    curator = SelectField('Curator / Project Manager', choices= people_dict, validators=[Required()])
+    curator_ar = StringField('Curator / Project Manager AR')
 
-    #inistitutions = SelectField('Institutions', validators=[Required()])
-    #inistitutions_ar =
+    inistitutions = SelectField('Institutions', choices=inistitutions_dict, validators=[Required()])
+    inistitutions_ar = StringField('Institutions AR')
 
-    #videographer = SelectField('Videographer', validators=[Required()])
-    #videographer_ar =
+    videographer = SelectField('Videographer', choices= videographers_dict, validators=[Required()])
+    videographer_ar = StringField('Videographer AR')
 
     event_desc = TextAreaField('Event Description')
     event_desc_ar = TextAreaField('Event Description AR')
@@ -50,8 +62,8 @@ class NameForm(FlaskForm):
     footage_desc = TextAreaField('Footage Description')
     footage_desc_ar = TextAreaField('Footage Description AR')
 
-    #event_type = SelectField('Event Type', validators=[Required()])
-    #event_type_ar =
+    event_type = SelectField('Event Type', choices=events_dict, validators=[Required()])
+    event_type_ar = StringField('Event Type AR')
 
     biographies = TextAreaField('Biographies')
     biographies_ar = TextAreaField('Biographies AR')
@@ -60,14 +72,14 @@ class NameForm(FlaskForm):
 
     old_directory = StringField('Old Directory')
 
-    #interviewer = SelectField('Interviewer', validators=[Required()])
-    #interviewer_ar =
+    interviewer = SelectField('Interviewer', choices= people_dict, validators=[Required()])
+    interviewer_ar = StringField('interviewer AR')
 
     title_of_edited_video = StringField('Title of the Edited Video', validators=[Required()])
     title_of_edited_video_ar = StringField('Title of the Edited Video', validators=[Required()])
 
-    #keywords = SelectField('Keywords', validators=[Required()])
-    #keywords_ar =
+    keywords = SelectField('Keywords', choices=keywords_dict, validators=[Required()])
+    keywords_ar = StringField('Keywords AR')
 
     upload_files = FileField('Upload Files', validators=[Required()])
     
