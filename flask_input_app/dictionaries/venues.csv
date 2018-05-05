@@ -1,0 +1,5 @@
+id, venue, venue_ar, city, city_ar, country, country_ar, description
+1,'Darb 1718','درب 17/18','cairo','القاهرة','Egypt','مصر','Old Cairo'
+2,'Soma','سوما','Cairo','القاهرة','Egypt','مصر','Zamalek'
+3,'Mashrabeya','مشربية','Cairo','القاهرة','Egypt','مصر','Downtown'
+4,'Medrar','مدرار','Cairo','القاهرة','Egypt','مصر','Garden City'

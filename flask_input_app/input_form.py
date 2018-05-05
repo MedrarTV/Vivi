@@ -26,8 +26,14 @@ class InputForm(FlaskForm):
     ## ONE FIELD ONLY
     venue = SelectField('Venue', choices=venues_dict, validators=[Required()])
     venue_ar = StringField('Venue AR', render_kw={'readonly': True})
-    city = StringField('City', render_kw={'readonly': True})
-    city_ar = StringField('City AR', render_kw={'readonly': True})
+    venue_city = StringField('Venue City', render_kw={'readonly': True})
+    venue_city_ar = StringField('Venue City AR', render_kw={'readonly': True})
+    venue_country = StringField(
+        'Venue Country', render_kw={'readonly': True})
+    venue_country_ar = StringField(
+        'Venue Country AR', render_kw={'readonly': True})
+    venue_description = TextAreaField(
+        'Venue Description', render_kw={'readonly': True})
     selected_venue = StringField(
         'Selected Venue', render_kw={'readonly': True})
 
@@ -50,14 +56,14 @@ class InputForm(FlaskForm):
         'Selected Curator(s)', render_kw={'readonly': True})
 
     ## ONE OR MORE FIELDS
-    inistitution = SelectField(
+    inst = SelectField(
         'Institution', choices=institutions_dict, validators=[Required()])
-    inistitution_ar = StringField(
+    inst_ar = StringField(
         'Institution AR', render_kw={'readonly': True})
-    country = StringField(
-        'Country', render_kw={'readonly': True})
-    country_ar = StringField(
-        'Country AR', render_kw={'readonly': True})
+    inst_country = StringField(
+        'Institution Country', render_kw={'readonly': True})
+    inst_country_ar = StringField(
+        'Institution Country AR', render_kw={'readonly': True})
     selected_institutions = TextAreaField(
         'Selected Institution(s)', render_kw={'readonly': True})
 
@@ -98,8 +104,8 @@ class InputForm(FlaskForm):
         'Selected Interviewer(s)', render_kw={'readonly': True})
 
     ## ONE OR MORE FIELDS
-    ##title_of_edited_video = SelectField(
-      ##  'Title of the Edited Video', choices=title_of_edited_video_dict, validators=[Required()])
+    title_of_edited_video = SelectField(
+        'Title of the Edited Video', choices=title_of_edited_video_dict, validators=[Required()])
     title_of_edited_video_ar = StringField(
         'Title of the Edited Video AR', render_kw={'readonly': True})
     selected_titles = TextAreaField(
