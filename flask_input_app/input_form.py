@@ -1,16 +1,31 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, DateField, FileField, SelectField, TextAreaField
 from wtforms.validators import Required
-
+import csv
 
 class InputForm(FlaskForm):
+    
+    def __init__(self, *args, **kwargs):
+        super(InputForm, self).__init__(*args,**kwargs) 
+    
+    def fill_single_dicts(dict_name='keyword'):
+        choices = []
+        with open('dictionaries/'+dict_name+'s.csv', 'r', encoding='utf-8') as f:
+            reader = csv.DictReader(f, delimiter=',')
+            for item in reader:
+                choices.append((item['id'], item[dict_name]))
+            print(choices)
+        return choices
+
     #dicts
     venues_dict = [('0', 'Medrar'), ('1', 'Mashrabeya'), ('2', 'Room')]
     people_dict = [('0', 'Dia'), ('1', 'Allam'), ('2', 'Tawfig')]
     institutions_dict = [('0', 'Ins1'), ('1', 'Ins2'), ('2', 'Ins3')]
     videographers_dict = [('0', 'helmy'), ('1', 'Dia'), ('2', 'Mostafa')]
-    events_dict = [('0', 'Roznama'), ('1', 'CVF'), ('2', 'D-CAF')]
-    keywords_dict = [('0', 'Word1'), ('1', 'Word2'), ('2', 'Word3')]
+    events_dict = fill_single_dicts('event_type')
+    #events_dict = [('0', 'Roznama'), ('1', 'CVF'), ('2', 'D-CAF')]
+    #keywords_dict = [('0', 'Word1'), ('1', 'Word2'), ('2', 'Word3')]
+    keywords_dict = fill_single_dicts('keyword')
     title_of_edited_video_dict = [('0', 'Title1'), ('1', 'Title2'), ('2', 'Title3')]
 
     #the form's elements by order
@@ -122,3 +137,14 @@ class InputForm(FlaskForm):
 
     name = StringField('What is your name?', validators=[Required()])
     submit = SubmitField('Submit')
+
+    '''
+    dictionaries/creative_people.csv
+    dictionaries/event_types.csv
+    dictionaries/institutions.csv
+    dictionaries/keywords.csv
+    dictionaries/title_of_edited_videos.csv
+    dictionaries/venues.csv
+    dictionaries/videographers.csv
+    '''
+

@@ -3,3 +3,5 @@ gui/experri.py
 
 .idea
 .vscode
+gui/autocompelte-recipe.py
+mederartv/main_window.py

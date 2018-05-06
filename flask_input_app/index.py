@@ -5,7 +5,7 @@ from flask_moment import Moment
 from input_form import InputForm
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'hard to guess string'
+app.config['SECRET_KEY'] = 'vtrardem'
 
 manager = Manager(app)
 bootstrap = Bootstrap(app)
