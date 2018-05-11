@@ -1,4 +1,4 @@
-id, institution, institution_ar, country, country_ar
-1,'Medrar','مدرار','Egypt','مصر'
-2,'prohelvatia','بروهيلفاتيا','Egypt','مصر'
-3,'Medrar2','مدرار2','Egypt','مصر'
+id,institution,institution_ar,country,country_ar
+1,Medrar,مدرار,Egypt,مصر
+2,prohelvatia,بروهيلفاتيا,Egypt,مصر
+3,Medrar2,مدرار2,Egypt,مصر
