@@ -1,17 +1,53 @@
 {% extends "base.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
 
+{% block scripts %}
+{{ super() }}
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+    <script type="text/javascript" src="../static/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="../static/jquery-ui.js"></script>
+    <script type="text/javascript" src="../static/auto_complete.js"></script>
+{% endblock %}
+
 {% block title %}Medrar TV Archive{% endblock %}
 
 {% block page_content %}
 <div class="page-header">
     <h1>Hello, {% if name %}{{ name }}{% else %}Stranger{% endif %}!</h1>
 </div>
-  <form class="form form-horizontal" method="post" role="form">
+  <form class="form form-horizontal" method="post" role="form">    
     {{ form.hidden_tag() }}
     {{ wtf.form_errors(form, hiddens="only") }}
     {{ wtf.form_field(form.venue) }}
+    {{ wtf.form_field(form.selected_venue) }}
+    <button id="btnSignUp" class="btn btn-lg btn-primary btn-block" type="button" onclick="palValidateSignUp()">Sign up</button>
     {{ wtf.form_field(form.keywords) }}
-    {{ wtf.form_field(form.event_type) }}
+    {{ wtf.form_field(form.event_type) }}  
+    <input type="file" webkitdirectory directory multiple/>
+    {{ wtf.form_field(form.upload_files) }}
+    
   </form>
+
 {% endblock %}
+
+<!-- <script type="text/javascript">
+  function palValidateSignUp() {
+    $(function () {
+      $('#btnSignUp').click(function () {
+
+        $.ajax({
+          url: '/signUp',
+          data: $('form').serialize(),
+          type: 'POST',
+          success: function (response) {
+            console.log(response);
+          },
+          error: function (error) {
+            console.log(error);
+          }
+        });
+      });
+    });
+  }
+</script> -->
+
