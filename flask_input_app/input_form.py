@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, DateField, FileField, SelectField, TextAreaField, SelectMultipleField, TextField
+from wtforms import StringField, SubmitField, FileField, SelectField, TextAreaField, DateField, SelectMultipleField, TextField, SelectMultipleField
 from wtforms.validators import Required
+#from wtforms.fields.html5 import DateField
 import csv
 
 class InputForm(FlaskForm):
@@ -21,7 +22,8 @@ class InputForm(FlaskForm):
     '''
 
     def fill_dict(dict_name):
-        choices=[(0,'')]
+        #choices=[(0,'')]
+        choices=[]
         fill = []
         with open('dictionaries/'+dict_name+'.csv', 'r', encoding='utf-8') as f:
             reader = csv.DictReader(f,delimiter=',')
@@ -80,12 +82,11 @@ class InputForm(FlaskForm):
 
 
     #class variables
-    fill_peoples_dict()
     separator = ';'
 
     #dicts
     venues_dict = fill_dict('venues')
-    people_dict = fill_dict('creative_people')
+    people_dict = fill_dict('people')
     institutions_dict = fill_dict('institutions')
     videographers_dict = fill_dict('videographers')
     events_dict = fill_dict('event_types')
@@ -98,22 +99,20 @@ class InputForm(FlaskForm):
     event_title = StringField('Event Title', validators=[Required()])
     event_title_ar = StringField('Event Title AR', validators=[Required()])
 
-    current_date = DateField('Date', validators=[Required()])
-    event_date = DateField('Event Date', validators=[Required()])
+    current_date = DateField('Date',format='%Y-%m-%d' ,validators=[Required()])
+    event_date = DateField(
+        'Event Date', format='%Y-%m-%d', validators=[Required()])
 
 
     ## ONE FIELD ONLY
-    venue = SelectField('Venue', choices=venues_dict, validators=[Required()])
+    venue = SelectField('Venue', choices=venues_dict, id='venue')
 
-    selected_venue = StringField(
-        'Selected Venue', id='selected_venue')
-    #, render_kw={'readonly': True}
+    selected_venue = TextAreaField(
+        'Selected Venue', id='selected_venue', validators=[Required()], render_kw={'readonly': True})
 
-    """     selected_venue = TextField(
-        'Selected Venue', id='selected_venue') """
 
     ## ONE OR MORE FIELDS
-    artists = SelectField('Artists', choices=people_dict,
+    artists = StringField('Artists',
                           validators=[Required()])
     #artists_ar = StringField('Artists AR', render_kw={'readonly': True})
     selected_artists = TextAreaField(
@@ -125,30 +124,18 @@ class InputForm(FlaskForm):
     ## ONE OR MORE FIELDS
     curator = SelectField('Curator / Project Manager',
                           choices=people_dict, validators=[Required()])
-    #curator_ar = StringField(
-    #    'Curator / Project Manager AR', render_kw={'readonly': True})
     selected_curators = TextAreaField(
         'Selected Curator(s)', render_kw={'readonly': True})
 
     ## ONE OR MORE FIELDS
     inst = SelectField(
         'Institution', choices=institutions_dict, validators=[Required()])
-    #inst_ar = StringField(
-    #    'Institution AR', render_kw={'readonly': True})
-    #inst_country = StringField(
-    #    'Institution Country', render_kw={'readonly': True})
-    #inst_country_ar = StringField(
-    #    'Institution Country AR', render_kw={'readonly': True})
     selected_institutions = TextAreaField(
         'Selected Institution(s)', render_kw={'readonly': True})
 
     ## ONE FIELD ONLY
     videographer = SelectField(
         'Videographer', choices=videographers_dict, validators=[Required()])
-    #videographer_ar = StringField(
-    #    'Videographer AR', render_kw={'readonly': True})
-    #selected_videographer = StringField(
-    #    'Selected Videographer', render_kw={'readonly': True})
 
     event_desc = TextAreaField('Event Description')
     event_desc_ar = TextAreaField('Event Description AR')
@@ -160,7 +147,6 @@ class InputForm(FlaskForm):
     # ONLY ONE COLUMN, AR AND EN
     event_type = SelectField(
         'Event Type', choices=events_dict, validators=[Required()])
-    #event_type_ar = StringField('Event Type AR', render_kw={'readonly': True})
     selected_events = TextAreaField(
         'Selected Event(s)', render_kw={'readonly': True})
 
@@ -174,25 +160,19 @@ class InputForm(FlaskForm):
     ## ONE OR MORE FIELDS
     interviewer = SelectField(
         'Interviewer', choices=people_dict, validators=[Required()])
-    #interviewer_ar = StringField(
-    #    'interviewer AR', render_kw={'readonly': True})
     selected_interviewers = TextAreaField(
         'Selected Interviewer(s)', render_kw={'readonly': True})
 
     ## ONE OR MORE FIELDS
     title_of_edited_video = SelectField(
         'Title of the Edited Video', choices=title_of_edited_video_dict, validators=[Required()])
-    #title_of_edited_video_ar = StringField(
-    #    'Title of the Edited Video AR', render_kw={'readonly': True})
-    #edited_video_url = StringField('Edited Video URL', render_kw={'readonly':True})
     selected_titles = TextAreaField(
         'Selected Title(s)', render_kw={'readonly': True})
 
     ## ONE OR MORE FIELDS
     # ONLY ONE COLUMN, AR AND EN
-    keywords = SelectField(
+    keywords = SelectMultipleField(
         'Keywords', choices=keywords_dict, validators=[Required()])
-    #keywords_ar = StringField('Keywords AR', render_kw={'readonly': True})
     selected_keywords = TextAreaField(
         'Selected Keyword(s)', render_kw={'readonly': True})
 
@@ -200,7 +180,7 @@ class InputForm(FlaskForm):
 
     edited=None
 
-    name = StringField('What is your name?', validators=[Required()])
+    name = StringField('What is your name?', validators=[Required()], id='name')
     submit = SubmitField('Submit')
 
 

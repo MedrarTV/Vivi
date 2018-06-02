@@ -3,10 +3,41 @@
 
 {% block scripts %}
 {{ super() }}
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="../static/jquery-ui.css">
     <script type="text/javascript" src="../static/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="../static/jquery-ui.js"></script>
+    <link href="../static/select2.min.css" rel="stylesheet" />
+    <script src="../static/select2.min.js"></script>
     <script type="text/javascript" src="../static/auto_complete.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        $("#current_date").datepicker();
+        $("#event_date").datepicker();
+        $("#keywords").select2({
+          allowClear: true
+        });
+        $("#venue").select2();
+        AutoComplete('artists', 'selected_artists', '{{ url_for("artists") }}');
+      });
+
+      function palValidateSignUp() {
+          $(function () {
+            $('#btnSignUp').click(function () {
+              $.ajax({
+                url: '/signUp',
+                data: $('form').serialize(),
+                type: 'POST',
+                success: function (response) {
+                  console.log(response);
+                },
+                error: function (error) {
+                  console.log(error);
+                }
+              });
+            });
+          });
+        }
+    </script>
 {% endblock %}
 
 {% block title %}Medrar TV Archive{% endblock %}
@@ -18,36 +49,33 @@
   <form class="form form-horizontal" method="post" role="form">    
     {{ form.hidden_tag() }}
     {{ wtf.form_errors(form, hiddens="only") }}
+    {{ wtf.form_field(form.current_date) }}
+    {{ wtf.form_field(form.event_date) }}
     {{ wtf.form_field(form.venue) }}
-    {{ wtf.form_field(form.selected_venue) }}
+    {{ wtf.form_field(form.artists) }}
+    {{ wtf.form_field(form.selected_artists) }}
     <button id="btnSignUp" class="btn btn-lg btn-primary btn-block" type="button" onclick="palValidateSignUp()">Sign up</button>
     {{ wtf.form_field(form.keywords) }}
     {{ wtf.form_field(form.event_type) }}  
-    <input type="file" webkitdirectory directory multiple/>
+    {{wtf.form_field(form.name)}}
+    <input type="file" name="file[]" id="dir" webkitdirectory directory multiple=""/>
+  
+    <hr>
     {{ wtf.form_field(form.upload_files) }}
-    
+    <hr>
+    {{wtf.form_field(form.submit)}}
   </form>
 
+    <hr>
+    <h1>Upload new File</h1>
+    <form action='' method="POST" enctype="multipart/form-data">
+       <!-- {{wtf.form_field(form.name)}} -->
+      <p>
+        <input type='file' name='file[]' multiple=''>
+        <input type='submit' value='upload'>
+      </p>
+    
+    </form>
+
 {% endblock %}
-
-<!-- <script type="text/javascript">
-  function palValidateSignUp() {
-    $(function () {
-      $('#btnSignUp').click(function () {
-
-        $.ajax({
-          url: '/signUp',
-          data: $('form').serialize(),
-          type: 'POST',
-          success: function (response) {
-            console.log(response);
-          },
-          error: function (error) {
-            console.log(error);
-          }
-        });
-      });
-    });
-  }
-</script> -->
 
