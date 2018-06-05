@@ -4,10 +4,11 @@ from flask_bootstrap import Bootstrap
 from input_form import InputForm
 import json
 import os
-from new_artist import ArtistForm
+from add_item import ArtistForm, VenueForm
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'vtrardem'
+##app.config['SECRET_KEY'] = 'vtrardem'
 app.config['DEBUG'] = True
+app.config['WTF_CSRF_ENABLED'] = False
 app.config['UPLOAD_FOLDER'] = 'G:\\work and courses\\Medrar\\uploading_testing\\'
 
 manager = Manager(app)
@@ -26,19 +27,17 @@ def internal_server_error(e):
 THE MAIN DICT: 
 dictionaries/main_dict.csv 
 
-        dictionaries/venues.csv , venues_dict, venue
+        dictionaries/venues.csv , venues_dict, venue, inst [ven_id,inst_ids]
 
-        dictionaries/creative_people.csv , people_dict, artists, curator, interviewer
+        dictionaries/creative_people.csv , people_dict, artists, curator, interviewer [aids,cids,iids]
 
-        dictionaries/institutions.csv , institutions_dict, inst
+        dictionaries/videographers.csv , videographers_dict, videographer [vid]
 
-        dictionaries/videographers.csv , videographers_dict, videographer
-
-        dictionaries/event_types.csv , events_dict, event_type
+        dictionaries/event_types.csv , events_dict, event_type [eids]
                 
-        dictionaries/title_of_edited_videos.csv , title_of_edited_video_dict, title_of_edited_video
+        dictionaries/title_of_edited_videos.csv , title_of_edited_video_dict, title_of_edited_video [tids]
 
-        dictionaries/keywords.csv , keywords_dict, keywords
+        dictionaries/keywords.csv , keywords_dict, keywords [kids]
 '''
 
 NAMES = ["abc", "abcd", "abcde", "abcdef"]
@@ -70,16 +69,34 @@ def upload_file():
 @app.route('/', methods=['GET', 'POST'])
 def index():
     form = InputForm()
+    #print(request.form, "\n", session, "\n===================================\n")  # Debugging
     if form.validate_on_submit():
-        session['name'] = form.name.data
+        session['venue'] = form.venue.data
+        print('=============session of venue================')
+        print(session['venue'])
         return redirect(url_for('index'))
-    return render_template('index.html', form=form, name=session.get('name'))
+    return render_template('index.html', form=form, venue=session.get('venue'))
 
 
-@app.route('/new_artist', methods=['GET'])
-def new_artist():
+@app.route('/add_artist', methods=['GET','POST'])
+def add_artist():
     form = ArtistForm()
-    return render_template('new_artist.html', form=form)
+    if form.validate_on_submit():
+        print('i am here')
+        return redirect(url_for('index'))
+    return render_template('add_artist.html', form=form)
+
+
+@app.route('/add_videographer', methods=['GET'])
+def add_videographer():
+    form = ArtistForm()
+    return render_template('add_videographer.html', form=form)
+
+
+@app.route('/add_venue', methods=['GET'])
+def add_venue():
+    form = VenueForm()
+    return render_template('add_venue.html', form=form)
 
 if __name__ == '__main__':
     manager.run()

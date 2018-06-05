@@ -1,0 +1,21 @@
+{% extends "base.html" %} 
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Medrar TV Archive{% endblock %} 
+
+{% block page_content %}
+<div class="page-header">
+    <h1>New Venue Form</h1>
+</div>
+<form class="form form-horizontal" method="post" role="form">    
+    {{ wtf.form_field(form.venue)}}
+     {{ wtf.form_field(form.venue_ar)}}
+     {{ wtf.form_field(form.city)}}
+     {{ wtf.form_field(form.city_ar)}}
+     {{ wtf.form_field(form.country)}}
+     {{ wtf.form_field(form.country_ar)}}
+     {{ wtf.form_field(form.description)}}
+    {{wtf.form_field(form.submit)}}
+</form>
+
+{% endblock %}
