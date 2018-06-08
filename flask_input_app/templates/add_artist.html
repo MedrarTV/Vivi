@@ -8,8 +8,13 @@
     <h1>New Artist Form</h1>
 </div>
 <form class="form form-horizontal" method="post" role="form">    
-     Artist Name {{ wtf.form_field(form.artist_name) }}    
-     Artist Name ARA {{ wtf.form_field(form.artist_name_ar)}}
+     {{ wtf.form_field(form.name) }}    
+     {{ wtf.form_field(form.name_ar)}}
+     {{wtf.form_field(form.categories)}}
+     {{wtf.form_field(form.biography)}}
+     {{wtf.form_field(form.biography_ar)}}
+     {{wtf.form_field(form.website)}}
+     
     {{wtf.form_field(form.submit)}}
 </form>
 

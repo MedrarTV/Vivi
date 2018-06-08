@@ -18,12 +18,14 @@
         $("#curator").select2();
         $("#inst").select2();
         $("#videographer").select2();
-        $("#event_type").select2();        
+        $("#categories").select2();        
         $("#interviewer").select2();
         $("#title_of_edited_video").select2();
         $("#keywords").select2({
           allowClear: true          
         });
+        $("#featuring").select2();
+        $("#topics").select2();
         //AutoComplete('artists', 'selected_artists', '{{ url_for("artists") }}');
       });
  
@@ -51,40 +53,50 @@
 
 {% block page_content %}
 <div class="page-header">
-    <h1>Hello, {% if venue %}{{ venue }}{% else %}Stranger{% endif %}!</h1>
+    <!-- <h1>Hello, {% if venue %}{{ venue }}{% else %}Stranger{% endif %}!</h1> -->
+    <h1>Medrar TV Archive Input Form</h1>
 </div>
   <form class="form form-horizontal" method="post" role="form">    
     {{ form.hidden_tag() }}
+    <div>
     {{ wtf.form_errors(form, hiddens="only") }}
+    {{ wtf.form_field(form.root_dir) }}
     {{ wtf.form_field(form.event_title) }}
     {{ wtf.form_field(form.event_title_ar) }}
     {{ wtf.form_field(form.current_date) }}
     {{ wtf.form_field(form.event_date) }}
+    {{ wtf.form_field(form.event_date_until) }}    
+    {{ wtf.form_field(form.videographer) }}
     {{ wtf.form_field(form.venue) }}
+    </div>
+    <div>
     {{ wtf.form_field(form.artists) }}
+    {{ wtf.form_field(form.curator) }}
+    {{ wtf.form_field(form.interviewer) }}
+    {{ wtf.form_field(form.featuring) }}
     {{ wtf.form_field(form.credits) }}
     {{ wtf.form_field(form.credits_ar) }}
-    {{ wtf.form_field(form.curator) }}
+    </div>
+    <div>
     {{ wtf.form_field(form.inst) }}
-    {{ wtf.form_field(form.videographer) }}
     {{ wtf.form_field(form.event_desc) }}
     {{ wtf.form_field(form.event_desc_ar) }}
     {{ wtf.form_field(form.footage_desc) }}
     {{ wtf.form_field(form.footage_desc_ar) }}
-    {{ wtf.form_field(form.event_type) }}
-    {{ wtf.form_field(form.biographies) }}
-    {{ wtf.form_field(form.biographies_ar) }}
-    {{ wtf.form_field(form.notes) }}
-    {{ wtf.form_field(form.interviewer) }}
-    {{ wtf.form_field(form.title_of_edited_video) }}
+    {{ wtf.form_field(form.categories) }}
+    </div>
+    <div>
+    {{ wtf.form_field(form.topics) }}
     {{ wtf.form_field(form.keywords) }}
+    {{ wtf.form_field(form.notes) }}
+    {{ wtf.form_field(form.title_of_edited_video) }}
+    </div>
     {{ wtf.form_field(form.cam_aud)}}
 
    <!--<button id="btnSignUp" class="btn btn-lg btn-primary btn-block" type="button" onclick="palValidateSignUp()">Sign up</button> 
     <input type="file" name="file[]" id="dir" webkitdirectory directory multiple=""/>
   
     <hr>
-    {{ wtf.form_field(form.upload_files) }}
     <hr>-->
     {{wtf.form_field(form.submit)}}
   </form>

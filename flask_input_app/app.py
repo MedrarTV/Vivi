@@ -4,9 +4,9 @@ from flask_bootstrap import Bootstrap
 from input_form import InputForm
 import json
 import os
-from add_item import ArtistForm, VenueForm
+from add_item import ArtistForm, VenueForm, ShooterForm
 app = Flask(__name__)
-##app.config['SECRET_KEY'] = 'vtrardem'
+app.config['SECRET_KEY'] = 'vtrardem'
 app.config['DEBUG'] = True
 app.config['WTF_CSRF_ENABLED'] = False
 app.config['UPLOAD_FOLDER'] = 'G:\\work and courses\\Medrar\\uploading_testing\\'
@@ -33,7 +33,7 @@ dictionaries/main_dict.csv
 
         dictionaries/videographers.csv , videographers_dict, videographer [vid]
 
-        dictionaries/event_types.csv , events_dict, event_type [eids]
+        dictionaries/categories.csv , categories_dict, categories [catids]
                 
         dictionaries/title_of_edited_videos.csv , title_of_edited_video_dict, title_of_edited_video [tids]
 
@@ -68,19 +68,19 @@ def upload_file():
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    form = InputForm()
+    form = InputForm(csrf_enabled=False)
     #print(request.form, "\n", session, "\n===================================\n")  # Debugging
     if form.validate_on_submit():
         session['venue'] = form.venue.data
         print('=============session of venue================')
         print(session['venue'])
-        return redirect(url_for('index'))
+        return redirect(url_for('add_artist'))
     return render_template('index.html', form=form, venue=session.get('venue'))
 
 
 @app.route('/add_artist', methods=['GET','POST'])
 def add_artist():
-    form = ArtistForm()
+    form = ArtistForm(csrf_enabled=False)
     if form.validate_on_submit():
         print('i am here')
         return redirect(url_for('index'))
@@ -89,13 +89,13 @@ def add_artist():
 
 @app.route('/add_videographer', methods=['GET'])
 def add_videographer():
-    form = ArtistForm()
+    form = ShooterForm(csrf_enabled=False)
     return render_template('add_videographer.html', form=form)
 
 
 @app.route('/add_venue', methods=['GET'])
 def add_venue():
-    form = VenueForm()
+    form = VenueForm(csrf_enabled=False)
     return render_template('add_venue.html', form=form)
 
 if __name__ == '__main__':
