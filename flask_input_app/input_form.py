@@ -3,22 +3,23 @@ from wtforms import StringField, SubmitField, FileField, SelectField, TextAreaFi
 from wtforms.validators import Required, Length, DataRequired, Optional
 from wtforms.fields.html5 import DateField
 import csv
-
+import re
+import os
 class InputForm(FlaskForm):
     
     def __init__(self, *args, **kwargs):        
         super(InputForm, self).__init__(*args,**kwargs) 
-        self.venue.choices = self.fill_dict('venues')
+        self.venue.choices = self.fill_dict('venues',['ven_short','venue'])
         self.artists.choices = self.fill_dict('people',['name'])
         self.curator.choices = self.fill_dict('people', ['name'])
         self.inst.choices = self.fill_dict('venues',['venue'])
-        self.videographer.choices = self.fill_dict('videographers')
-        self.categories.choices = self.fill_dict('categories')
+        self.videographer.choices = self.fill_dict('videographers',['vid_short','videographer'])
+        self.categories.choices = self.fill_dict('categories',['category'])
         self.interviewer.choices = self.fill_dict('people', ['name'])
         self.title_of_edited_video.choices = self.fill_dict('title_of_edited_videos',['title'])
-        self.keywords.choices = self.fill_dict('keywords')   
+        self.keywords.choices = self.fill_dict('keywords',['keyword'])   
         self.featuring.choices = self.fill_dict('people', ['name'])
-        self.topics.choices = self.fill_dict('topics')
+        self.topics.choices = self.fill_dict('topics',['topic'])
         
         #print(self.fill_dict('venues')) 
         
@@ -44,14 +45,26 @@ class InputForm(FlaskForm):
                 temp_vals = ''
                 for k in keys_list[1:]:
                     if(k in ids):                        
-                        temp_vals += item[k]+'  '
+                        temp_vals += item[k]
+                        if(len(ids)>1):
+                            temp_vals += ' | '
                 choices.append((item['id'],temp_vals))
         return choices
     
-    ''' def get_valid_filename(s):
+    def get_valid_filename(s):
         s = str(s).strip().replace(' ', '_')
-    return re.sub(r'(?u)[^-\w.]', '', s) '''
-
+        return re.sub(r'(?u)[^-\w.]', '', s)
+    
+    def create_dir(root_path,items=[]):
+        if(os.path.isdir(root_path)):
+            return True
+        else:
+            return False
+    
+    def write_new_rec(input_dict={}):
+        #with open
+        return
+    
     #class variables
     separator = ';'
 

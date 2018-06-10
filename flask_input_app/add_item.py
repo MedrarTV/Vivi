@@ -3,11 +3,12 @@ from wtforms import StringField, SubmitField, FileField, SelectField, TextAreaFi
 from wtforms.validators import Required, Length, DataRequired
 #from wtforms.fields.html5 import DateField
 import csv
-
+from input_form import InputForm
 class ArtistForm(FlaskForm):
     
     def __init__(self, *args, **kwargs):
         super(ArtistForm, self).__init__(*args, **kwargs)
+        self.categories.choices = InputForm.fill_dict(self,'categories',['category'])
 
     def create_artist(name,name_ar,dict_name='people'):
         artist_id =0
