@@ -5,6 +5,8 @@ from input_form import InputForm
 import json
 import os
 from add_item import ArtistForm, VenueForm, ShooterForm
+from utilities import Utils
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'vtrardem'
 app.config['DEBUG'] = True
@@ -23,22 +25,6 @@ def page_not_found(e):
 def internal_server_error(e):
     return render_template('500.html'), 500
 
-'''
-THE MAIN DICT: 
-dictionaries/main_dict.csv 
-
-        dictionaries/venues.csv , venues_dict, venue, inst [ven_id,inst_ids]
-
-        dictionaries/creative_people.csv , people_dict, artists, curator, interviewer [aids,cids,iids]
-
-        dictionaries/videographers.csv , videographers_dict, videographer [vid]
-
-        dictionaries/categories.csv , categories_dict, categories [catids]
-                
-        dictionaries/title_of_edited_videos.csv , title_of_edited_video_dict, title_of_edited_video [tids]
-
-        dictionaries/keywords.csv , keywords_dict, keywords [kids]
-'''
 
 NAMES = ["abc", "abcd", "abcde", "abcdef"]
 #NAMES = {1:"abc", 2:"abcd", 3:"abcde", 4:"abcdef"}
@@ -71,15 +57,7 @@ def index():
     form = InputForm(csrf_enabled=False)
     #print(request.form, "\n", session, "\n===================================\n")  # Debugging
     if form.validate_on_submit():
-        """session['venue'] = form.venue.data
-        session['root_dir'] = form.root_dir.data
-        session['current_date'] = form.current_date.data
-        session['event_title'] = form.event_title.data
-        session['videographer'] = form.videographer.data
-        session['cam_aud'] = form.cam_aud.data
-        session['artists'] = form.artists.data
-        session['keywords'] = form.keywords.data
-        session['topics'] = form.topics.data """
+        #session['venue'] = form.venue.data
         form_dict={}
         print('=============vals dict================')
         form_dict['root_dir'] = form.root_dir.data
@@ -90,7 +68,7 @@ def index():
         form_dict['event_date_until'] = form.event_date_until.data
         form_dict['vid'] = form.videographer.data
         form_dict['ven_id'] = form.venue.data
-        form_dict['cam_aud'] = form.root_dir.data
+        form_dict['cam_aud'] = form.cam_aud.data
         form_dict['aids'] = form.artists.data
         form_dict['cids'] = form.curator.data
         form_dict['iids'] = form.interviewer.data
@@ -107,11 +85,27 @@ def index():
         form_dict['kids'] = form.keywords.data
         form_dict['arch_notes'] = form.notes.data
         form_dict['tids'] = form.title_of_edited_video.data
-        print(InputForm.create_dir(form_dict))
-        print(InputForm.get_valid_filename(form_dict['event_title']))
-        if not InputForm.create_dir(form_dict['root_dir']):
-            flash('error on Root Directory')
-        return redirect(url_for('add_artist'))
+        
+        if Utils.verify_root_path(form_dict['root_dir']):
+            print("#########++++ONE+++++=============")
+            path = Utils.create_dir(form_dict) 
+            rec = {}
+            written = False
+            if path != '': 
+                print("  # ++++TWO+++++=============")
+                rec = Utils.write_new_rec(form_dict,path)
+                print('RECCCC____ '+str(rec))
+                if rec:
+                    print("  # ++++THREE+++++=============")
+                    written = Utils.write_to_dict(rec)
+                    print("WRITTEN >>> "+str(written))
+                    if written:
+                        print("  # ++++FOUR+++++=============")
+                        Utils.open_folder_after_creation(path)
+                return "Hello WOrlds"
+        #if not InputForm.create_dir(form_dict['root_dir']):
+        #    flash('error on Root Directory')
+        
     return render_template('index.html', form=form, venue=session.get('venue'))
 
 
