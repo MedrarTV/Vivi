@@ -107,8 +107,7 @@ def index():
         form_dict['kids'] = form.keywords.data
         form_dict['arch_notes'] = form.notes.data
         form_dict['tids'] = form.title_of_edited_video.data
-        print(form_dict)
-        print(InputForm.create_dir(form_dict['root_dir']))
+        print(InputForm.create_dir(form_dict))
         print(InputForm.get_valid_filename(form_dict['event_title']))
         if not InputForm.create_dir(form_dict['root_dir']):
             flash('error on Root Directory')

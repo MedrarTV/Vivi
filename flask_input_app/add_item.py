@@ -69,13 +69,8 @@ class VenueForm(FlaskForm):
     venue = StringField('Institution/Venue/location Name *',
                         validators=[DataRequired(), Length(max=50)])
     venue_ar = StringField('إسم المؤسسة/المساحة/الموقع *', validators=[DataRequired()])
-    gps_coords = StringField('GPS coordinates *', validators=[DataRequired()])
     description = StringField('Description')
     description_ar = StringField('وصف المؤسسة أو المكان')
-    city = StringField('City')
-    city_ar = StringField('اسم المدينة')
-    country = StringField('Country')
-    country_ar = StringField('اسم الدولة')
     website = StringField('Website')
 
     submit = SubmitField('Submit')
