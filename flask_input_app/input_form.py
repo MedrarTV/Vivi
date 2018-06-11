@@ -127,7 +127,7 @@ class InputForm(FlaskForm):
 
         return names_dict
 
-    def group_dict(ids, , dict_keys=['name', 'name_ar'], dict_name='people', dicts_dir='dictionaries/', separator=';'):
+    def group_dict(ids, dict_keys=['name', 'name_ar'], dict_name='people', dicts_dir='dictionaries/', separator=';'):
         dictionary = pd.read_csv(dicts_dir+dict_name+'.csv')
         res_dict = dict.fromkeys(dict_keys)
         
@@ -135,7 +135,7 @@ class InputForm(FlaskForm):
             item=[]
 
         for i in ids:
-            temp_dict = dict(people.iloc[i])
+            temp_dict = dict(dictionary.iloc[i])
             for j in temp_dict.keys():
                 if j in dict_keys:
                     res_dict[j].append(temp_dict[j])
@@ -207,7 +207,7 @@ class InputForm(FlaskForm):
         main_dict['vids_url'] = edited_videos['url']
 
         main_dict['edited']= edited
-        
+
         return main_dict
     
     #class variables
