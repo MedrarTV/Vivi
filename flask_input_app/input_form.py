@@ -6,6 +6,8 @@ import csv
 import re
 import os
 import pandas as pd
+
+
 class InputForm(FlaskForm):
     
     def __init__(self, *args, **kwargs):        
@@ -112,20 +114,6 @@ class InputForm(FlaskForm):
             res[i]=src[i]
         return res
     
-    def traversing_people_dict(ids, dicts_dir='dictionaries/',separator=';'):
-        people = pd.read_csv(dicts_dir+'people.csv')
-        names_dict = {'names':'','names_ar':''}
-        names_lst = []
-        names_ar_lst = []
-        for i in ids:
-            temp_dict = dict(people.iloc[i])
-            names_lst.append(temp_dict['name'])
-            names_ar_lst.append(temp_dict['name_ar'])
-        
-        names_dict['names'] = separator.join(names_lst)
-        names_dict['names_ar'] = separator.join(names_ar_lst)
-
-        return names_dict
 
     def group_dict(ids, dict_keys=['name', 'name_ar'], dict_name='people', dicts_dir='dictionaries/', separator=';'):
         dictionary = pd.read_csv(dicts_dir+dict_name+'.csv')
@@ -145,9 +133,9 @@ class InputForm(FlaskForm):
 
         return res_dict
 
-    def write_new_rec(form_dict,dicts_dir='dictionaries/',edited=0):
+    def write_new_rec(form_dict,directory,dicts_dir='dictionaries/',edited=0):
         
-        videographer = pd.read_csv(dicts_dir+'videographers.csv')                       
+                           
         title_of_edited_videos = pd.read_csv(dicts_dir+'title_of_edited_videos.csv')
 
         keys_list = ['id','root_dir','event_title','normalized_title','event_title_ar','current_date'
@@ -157,7 +145,7 @@ class InputForm(FlaskForm):
                     'curator_ar','iids','interviewer','interviewer_ar','fids','featuring','featuring_ar',
                     'inst_ids','inst','inst_ar','event_desc','event_desc_ar','footage_desc','footage_desc_ar',
                     'catids','categories','topids','topics','kids','keywords','arch_notes',
-                    'tids','title_of_edited_video','title_of_edited_video_ar','edited_video_url','edited']
+                    'tids','title_of_edited_video','title_of_edited_video_ar','edited_video_url','directory','edited']
         
         main_dict = dict.fromkeys(keys_list)
 
@@ -167,12 +155,14 @@ class InputForm(FlaskForm):
         main_dict['normalized_title'] = InputForm.get_valid_filename(
             main_dict['event_title'])
         
+        videographer = pd.read_csv(dicts_dir+'videographers.csv')
         videographer = videographer.iloc[main_dict['vid']]
         main_dict['vid_short'] = dict(videographer)['vid_short']
         main_dict['videographer'] = dict(videographer)['name']
         main_dict['videographer_ar'] = dict(videographer)['name_ar']
 
-        venue = dict(venues.iloc[main_dict['ven_id']])
+        venue = pd.read_csv(dicts_dir+'venues.csv')
+        venue = dict(venue.iloc[main_dict['ven_id']])
         main_dict = InputForm.clone_dict(venue, main_dict)
 
         main_dict['cam_aud'] = InputForm.determine_cam_aud(main_dict['cam_aud'])
@@ -206,10 +196,20 @@ class InputForm(FlaskForm):
         main_dict['titles_of_vids_ar'] = edited_videos['title_ar']
         main_dict['vids_url'] = edited_videos['url']
 
+        main_dict['directory'] = directory
         main_dict['edited']= edited
 
         return main_dict
     
+    def write_to_dict(keys_list, rec, dict_name='main_dict', dicts_dir='dictionaries/'):
+        with open(dicts_dir+dict_name+'.csv', 'a', encoding='utf-8', newline='') as file:
+            writer = csv.DictWriter(file,keys_list)
+            try:
+                writer.writerow(rec)
+            except IOError as e:
+                print('ERROR >>>> ',e)
+
+                
     #class variables
     separator = ';'
 
