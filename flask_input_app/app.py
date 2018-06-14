@@ -55,11 +55,30 @@ def upload_file():
 @app.route('/', methods=['GET', 'POST'])
 def index():
     form = InputForm(csrf_enabled=False)
-    #print(request.form, "\n", session, "\n===================================\n")  # Debugging
     if form.validate_on_submit():
+        session['event_title'] = form.event_title.data
+        session['root_dir'] = form.root_dir.data
+        session['event_title_ar'] = form.event_title_ar.data
+        session['event_date'] = form.event_date.data
+        session['event_date_until'] = form.event_date_until.data
+        session['aids'] = form.artists.data
+        session['cids'] = form.curator.data
+        session['iids'] = form.interviewer.data
+        session['fids'] = form.featuring.data
+        session['credits'] = form.credits.data
+        session['credits_ar'] = form.credits_ar.data
+        session['inst_ids'] = form.inst.data
+        session['event_desc'] = form.event_desc.data
+        session['event_desc_ar'] = form.event_desc_ar.data
+        session['footage_desc'] = form.footage_desc.data
+        session['footage_desc_ar'] = form.footage_desc_ar.data
+        session['catids'] = form.categories.data
+        session['topids'] = form.topics.data
+        session['kids'] = form.keywords.data
+        session['arch_notes'] = form.notes.data
+        session['tids'] = form.title_of_edited_video.data
         #session['venue'] = form.venue.data
         form_dict={}
-        print('=============vals dict================')
         form_dict['root_dir'] = form.root_dir.data
         form_dict['event_title'] = form.event_title.data
         form_dict['event_title_ar'] = form.event_title_ar.data
@@ -86,12 +105,12 @@ def index():
         form_dict['arch_notes'] = form.notes.data
         form_dict['tids'] = form.title_of_edited_video.data
         
-        if Utils.verify_root_path(form_dict['root_dir']):
+        if Utils.verify_root_path(form_dict['root_dir']):            
             print("#########++++ONE+++++=============")
             path = Utils.create_dir(form_dict) 
             rec = {}
             written = False
-            if path != '': 
+            if Utils.verify_abs_path(path): 
                 print("  # ++++TWO+++++=============")
                 rec = Utils.write_new_rec(form_dict,path)
                 print('RECCCC____ '+str(rec))
@@ -102,11 +121,25 @@ def index():
                     if written:
                         print("  # ++++FOUR+++++=============")
                         Utils.open_folder_after_creation(path)
-                return "Hello WOrlds"
+                        flash('written successfully!')
+                        ### the redirect to the same page till i make a new one....
+                        return redirect(url_for('index'))
+                    else:
+                        flash('an error occured during writing, please attempt again...')
+                        render_template('index.html', form=form)
+                else:
+                    flash('An ERROR occured upon creation of the record, please verify your input...')
+                    render_template('index.html', form=form)
+            else:
+                flash('the path already exists...')
+                render_template('index.html', form=form)
+        else:
+            flash('root directory Doesnt Exist')
+            return render_template('index.html', form=form, session=session)
         #if not InputForm.create_dir(form_dict['root_dir']):
         #    flash('error on Root Directory')
         
-    return render_template('index.html', form=form, venue=session.get('venue'))
+    return render_template('index.html', form=form)
 
 
 @app.route('/artist',methods=['GET'])

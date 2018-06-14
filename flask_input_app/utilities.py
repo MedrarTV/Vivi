@@ -16,6 +16,14 @@ class Utils():
     def verify_root_path(root_dir):
         return os.path.isdir(root_dir)
 
+    def verify_abs_path(abs_path,dict_dir='dictionaries/',dict_name='main_dict'):
+        with open(dict_dir+dict_name+'.csv', encoding='utf-8') as file:
+            reader = csv.DictReader(file,delimiter=',')
+            for i in reader:
+                if i['directory'].find(abs_path) >-1:
+                    return False
+        return True
+
     def determine_cam_aud(i):
         cam_aud=''
         if i <= 3:
@@ -63,19 +71,23 @@ class Utils():
             try:
                 abs_path = os.path.join(root_dir, relative_path)
                 if os.path.isdir(abs_path):
-                    return False
+                    return "DIRECTORY ALREADY EXISTS!"
                 else:                    
                     os.makedirs(abs_path)
                     return abs_path
             except FileExistsError as e:
                 print("the Directory Already Exists",e)
-                return False
+                return e
+        else:
+            print("NO ROOT DIRECTORY")
+            return "ROOT DIRECTORY DOESN\'T EXIST!"
     
     def clone_dict(src,dst):
         res = dst
         keys_list = list(set(src.keys()).intersection(dst.keys()))
         for i in keys_list:
-            res[i]=src[i]
+            if i != 'id':
+                res[i]=src[i]
         return res
 
     def group_dict(ids, dict_keys=['name', 'name_ar'], dict_name='people', dicts_dir='dictionaries/', separator=';'):
@@ -89,10 +101,9 @@ class Utils():
         if not ids or len(ids) ==0:
             return res_dict
 
-        print("IIIIIIIIIIIIIIIIIIIIIIIDDDDSSSS " + str(ids))
         for i in ids:
             i = int(i) -1
-            print("IIIIIIIIIIIIIIIIIIIIIII " + str(i))
+
             temp_dict = dict(dictionary.iloc[i])
             for j in temp_dict.keys():
                 if j in dict_keys:
@@ -106,10 +117,12 @@ class Utils():
 
     def write_new_rec(form_dict, directory, keys_list=InputForm.keys_list, dicts_dir='dictionaries/', edited=0):
         
-        main_dict = dict.fromkeys(keys_list)
-        main_dict = Utils.clone_dict(form_dict, main_dict)
+        max_id = (pd.read_csv(dicts_dir+'main_dict.csv').max()['id']+1).astype(int)
 
-        main_dict['id'] = pd.read_csv(dicts_dir+'main_dict.csv').max()['id']+1
+        main_dict = dict.fromkeys(keys_list)
+        main_dict = Utils.clone_dict(form_dict, main_dict)        
+        main_dict['id'] = str(max_id)
+        print('****************************'+main_dict['id']+'///////-----')
         main_dict['normalized_title'] = Utils.get_valid_filename(main_dict['event_title'])
         
         print("  # ++++WRRRRRR ONE+++++=============")
@@ -176,6 +189,7 @@ class Utils():
         return main_dict
     
     def write_to_dict(rec, keys_list=InputForm.keys_list, dict_name='main_dict', dicts_dir='dictionaries/'):
+        print('//////////*****'+rec['id']+'****/////////////')
         with open(dicts_dir+dict_name+'.csv', 'a', encoding='utf-8', newline='') as file:
             writer = csv.DictWriter(file,keys_list)
             try:
