@@ -42,7 +42,7 @@ def venues_response():
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
-    
+
     print(app.config['UPLOAD_FOLDER'])
     if request.method == 'POST':
         file = request.files['file[]']
@@ -105,13 +105,13 @@ def index():
         form_dict['kids'] = form.keywords.data
         form_dict['arch_notes'] = form.notes.data
         form_dict['tids'] = form.title_of_edited_video.data
-        
-        if Utils.verify_root_path(form_dict['root_dir']):            
+
+        if Utils.verify_root_path(form_dict['root_dir']):
             print("#########++++ONE+++++=============")
-            path = Utils.create_dir(form_dict) 
+            path = Utils.create_dir(form_dict)
             rec = {}
             written = False
-            if Utils.verify_abs_path(path): 
+            if Utils.verify_abs_path(path):
                 print("  # ++++TWO+++++=============")
                 rec = Utils.write_new_rec(form_dict,path)
                 print('RECCCC____ '+str(rec))
@@ -139,7 +139,7 @@ def index():
             return render_template('index.html', form=form, session=session)
         #if not InputForm.create_dir(form_dict['root_dir']):
         #    flash('error on Root Directory')
-        
+
     return render_template('index.html', form=form)
 
 

@@ -38,5 +38,9 @@ nosetests.xml
 # SQLite databases
 *.sqlite
 
+#ninja ide
+*.nja
+
+
 # Virtual environment
 venv

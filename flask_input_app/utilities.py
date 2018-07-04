@@ -9,11 +9,11 @@ from input_form import InputForm
 
 
 class Utils():
-    
+
     def get_valid_filename(s):
         s = str(s).strip().replace(' ', '_')
         return re.sub(r'(?u)[^-\w.]', '', s)
-    
+
     def verify_root_path(root_dir):
         return os.path.isdir(root_dir)
 
@@ -32,7 +32,7 @@ class Utils():
         else:
             cam_aud = 'A-'+str(i-3)
         return cam_aud
-             
+
     def create_dir(form_dict,separator =';'):
         root_dir = form_dict['root_dir']
         cur_date = form_dict['current_date']
@@ -44,9 +44,9 @@ class Utils():
         venue =''
         videographer = ''
         relative_path =''
-        
+
         cam_aud = Utils.determine_cam_aud(int(cam_aud))
-        
+
         with open('dictionaries/venues.csv', 'r', encoding='utf-8') as f:
             reader = csv.DictReader(f, delimiter=',')
             for item in reader:
@@ -73,7 +73,7 @@ class Utils():
                 abs_path = os.path.join(root_dir, relative_path)
                 if os.path.isdir(abs_path):
                     return "DIRECTORY ALREADY EXISTS!"
-                else:                    
+                else:
                     os.makedirs(abs_path)
                     return abs_path
             except FileExistsError as e:
@@ -82,7 +82,7 @@ class Utils():
         else:
             print("NO ROOT DIRECTORY")
             return "ROOT DIRECTORY DOESN\'T EXIST!"
-    
+
     def clone_dict(src,dst):
         res = dst
         keys_list = list(set(src.keys()).intersection(dst.keys()))
@@ -92,13 +92,13 @@ class Utils():
         return res
 
     def group_dict(ids, dict_keys=['name', 'name_ar'], dict_name='people', dicts_dir='dictionaries/', separator=';'):
-        
+
         dictionary = pd.read_csv(dicts_dir+dict_name+'.csv')
         res_dict = dict.fromkeys(dict_keys)
-        
+
         for key in res_dict.keys():
             res_dict[key] = []
-        
+
         if not ids or len(ids) ==0:
             return res_dict
 
@@ -109,7 +109,7 @@ class Utils():
             for j in temp_dict.keys():
                 if j in dict_keys:
                     res_dict[j].append(temp_dict[j])
-        
+
         for k in res_dict.keys():
             if res_dict[k]:
                 res_dict[k] = separator.join(list(res_dict[k]))
@@ -117,15 +117,15 @@ class Utils():
         return res_dict
 
     def write_new_rec(form_dict, directory, keys_list=InputForm.keys_list, dicts_dir='dictionaries/', edited=0):
-        
+
         max_id = (pd.read_csv(dicts_dir+'main_dict.csv').max()['id']+1).astype(int)
 
         main_dict = dict.fromkeys(keys_list)
-        main_dict = Utils.clone_dict(form_dict, main_dict)        
+        main_dict = Utils.clone_dict(form_dict, main_dict)
         main_dict['id'] = str(max_id)
         print('****************************'+main_dict['id']+'///////-----')
         main_dict['normalized_title'] = Utils.get_valid_filename(main_dict['event_title'])
-        
+
         print("  # ++++WRRRRRR ONE+++++=============")
 
         videographer = pd.read_csv(dicts_dir+'videographers.csv')
@@ -137,9 +137,9 @@ class Utils():
         print("  # ++++WRRRRRR TWO+++++=============")
 
         venue = pd.read_csv(dicts_dir+'venues.csv')
-        venue = dict(venue.iloc[int(main_dict['ven_id'])-1])   
+        venue = dict(venue.iloc[int(main_dict['ven_id'])-1])
         main_dict = Utils.clone_dict(venue, main_dict)
-        
+
         print("  # ++++WRRRRRR THREE+++++=============")
 
         main_dict['cam_aud'] = Utils.determine_cam_aud(int(main_dict['cam_aud']))
@@ -188,7 +188,7 @@ class Utils():
         main_dict['edited']= edited
 
         return main_dict
-    
+
     def write_to_dict(rec, keys_list=InputForm.keys_list, dict_name='main_dict', dicts_dir='dictionaries/'):
         print('//////////*****'+rec['id']+'****/////////////')
         with open(dicts_dir+dict_name+'.csv', 'a', encoding='utf-8', newline='') as file:
@@ -198,7 +198,7 @@ class Utils():
                 return True
             except IOError as e:
                 print('ERROR >>>> ',e)
-    
+
     def open_folder_after_creation(dir):
         try:
             subprocess.Popen('explorer '+dir)
