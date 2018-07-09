@@ -5,20 +5,26 @@ from wtforms.validators import Required, Length, DataRequired
 #from wtforms.fields.html5 import DateField
 import csv
 from input_form import InputForm
+from utilities import Utils
+
 class ArtistForm(FlaskForm):
     
     def __init__(self, *args, **kwargs):
         super(ArtistForm, self).__init__(*args, **kwargs)
         self.categories.choices = InputForm.fill_dict(self,'categories',['category'])
 
-    def create_artist(name,name_ar,dict_name='people'):
+    def create_artist(name,name_ar,ids,biography,biography_ar,website,dict_name='people'):
         artist_id =0
+        categories = Utils.group_dict([int(i) for i in ids],dict_keys=['category'] , dict_name='categories')
+        if not ids:
+            ids = ''
+            categories['category'] = ''
         with open('dictionaries/'+dict_name+'.csv', 'r+', encoding='utf-8', newline='') as file:
             reader = csv.DictReader(file, delimiter=',')
             artist_id = max(item['id'] for item in reader)
             print(artist_id)
             writer = csv.writer(file,delimiter=',')
-            writer.writerow([str(int(artist_id)+1),name,name_ar])
+            writer.writerow([str(int(artist_id)+1),name,name_ar,ids,categories['category'],biography,biography_ar,website])
         return int(artist_id)+1
 
     #print(create_artist('ss','ssadsadsa'))
@@ -36,14 +42,14 @@ class ShooterForm(FlaskForm):
     def __init__(self, *args, **kwargs):
         super(ShooterForm, self).__init__(*args, **kwargs)
 
-    def create_shooter(name,name_ar):
+    def create_shooter(short_name,name,name_ar):
         artist_id =0
-        with open('dictionaries/videographer.csv', 'r+', encoding='utf-8', newline='') as file:
+        with open('dictionaries/videographers.csv', 'r+', encoding='utf-8', newline='') as file:
             reader = csv.DictReader(file, delimiter=',')
             artist_id = max(item['id'] for item in reader)
             print(artist_id)
             writer = csv.writer(file,delimiter=',')
-            writer.writerow([str(int(artist_id)+1),name,name_ar])
+            writer.writerow([str(int(artist_id)+1),short_name,name,name_ar])
         return int(artist_id)+1
 
     shooter_short = StringField('Short Name *', validators=[Required()])
@@ -56,14 +62,14 @@ class VenueForm(FlaskForm):
     def __init__(self, *args, **kwargs):
         super(VenueForm, self).__init__(*args, **kwargs)
 
-    def create_venue(venue,venue_ar='',city='',city_ar='',country='',country_ar='',description=''):
+    def create_venue(venue_short,venue,venue_ar,description='',description_ar='',website=''):
         venue_id = 0
         with open('dictionaries/venues.csv', 'r+', encoding='utf-8', newline='') as file:
             reader = csv.DictReader(file, delimiter=',')
             venue_id = max(item['id'] for item in reader)
             print(venue_id)
             writer = csv.writer(file,delimiter=',')
-            writer.writerow([str(int(venue_id)+1), venue, venue_ar, city, city_ar, country, country_ar, description])
+            writer.writerow([str(int(venue_id)+1), venue_short, venue, description, description_ar, website])
         return int(venue_id)+1
 
     venue_short = StringField('Short Name *', validators=[Required()])

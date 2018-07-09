@@ -8,6 +8,7 @@
     <h1>New Videographer Form</h1>
 </div>
 <form class="form form-horizontal" method="post" role="form">
+    {{ form.hidden_tag() }} 
     {{wtf.form_field(form.shooter_short) }}
     {{ wtf.form_field(form.shooter_name) }}
     {{ wtf.form_field(form.shooter_name_ar)}}

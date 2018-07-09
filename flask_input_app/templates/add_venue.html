@@ -7,7 +7,8 @@
 <div class="page-header">
     <h1>New Location Form</h1>
 </div>
-<form class="form form-horizontal" method="post" role="form">    
+<form class="form form-horizontal" method="post" role="form">   
+    {{ form.hidden_tag() }} 
     {{ wtf.form_field(form.venue_short) }}
     {{ wtf.form_field(form.venue)}}
     {{ wtf.form_field(form.venue_ar)}}

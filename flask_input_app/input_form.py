@@ -39,6 +39,7 @@ class InputForm(FlaskForm):
                         temp_vals += item[k]
                         if(len(ids)>1):
                             temp_vals += ' | '
+                #print(temp_vals)
                 choices.append((item['id'],temp_vals))
         return choices
     

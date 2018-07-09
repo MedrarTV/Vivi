@@ -52,7 +52,7 @@
     <h1>Medrar TV Archive Input Form</h1>
 </div>
   <form class="form form-horizontal" method="post" role="form">    
-    {{ form.hidden_tag() }}
+      
     <div>
     {{ wtf.form_errors(form, hiddens="only") }}
     {{ wtf.form_field(form.root_dir) }}
@@ -62,10 +62,13 @@
     {{ wtf.form_field(form.event_date) }}
     {{ wtf.form_field(form.event_date_until) }}    
     {{ wtf.form_field(form.videographer) }}
+    <p><a href="{{ url_for('add_videographer') }}"><button>Add Videographer</button></a></p>
     {{ wtf.form_field(form.venue) }}
+    <p><a href="{{ url_for('add_venue') }}"><button>Add Location</button></a></p>    
     </div>
     <div>
     {{ wtf.form_field(form.artists) }}
+    <p><a href="{{ url_for('add_artist') }}"><button>Add People</button></a></p>    
     {{ wtf.form_field(form.curator) }}
     {{ wtf.form_field(form.interviewer) }}
     {{ wtf.form_field(form.featuring) }}

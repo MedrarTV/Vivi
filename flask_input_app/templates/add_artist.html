@@ -17,6 +17,7 @@
     <h1>New Artist Form</h1>
 </div>
 <form class="form form-horizontal" method="post" role="form">    
+     {{ form.hidden_tag() }} 
      {{ wtf.form_field(form.name) }}    
      {{ wtf.form_field(form.name_ar)}}
      {{wtf.form_field(form.categories)}}

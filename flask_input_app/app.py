@@ -5,13 +5,12 @@ from flask_bootstrap import Bootstrap
 from input_form import InputForm
 import json
 import os
-from add_item import ArtistForm, VenueForm, ShooterForm
+from add_items import ArtistForm, VenueForm, ShooterForm
 from utilities import Utils
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'vtrardem'
 app.config['DEBUG'] = True
-app.config['WTF_CSRF_ENABLED'] = False
 app.config['UPLOAD_FOLDER'] = 'G:\\work and courses\\Medrar\\uploading_testing\\'
 
 manager = Manager(app)
@@ -55,7 +54,7 @@ def upload_file():
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    form = InputForm(csrf_enabled=False)
+    form = InputForm()
     if form.validate_on_submit():
         session['event_title'] = form.event_title.data
         session['root_dir'] = form.root_dir.data
@@ -146,22 +145,44 @@ def index():
 @app.route('/artist',methods=['GET'])
 @app.route('/add_artist', methods=['GET','POST'])
 def add_artist():
-    form = ArtistForm(csrf_enabled=False)
+    form = ArtistForm()
     if form.validate_on_submit():
         print('i am here')
+        name=form.name.data
+        name_ar = form.name_ar.data
+        categories = form.categories.data
+        biography = form.biography.data
+        biography_ar = form.biography_ar.data
+        website = form.website.data
+        ArtistForm.create_artist(name,name_ar,categories,biography,biography_ar,website)
         return redirect(url_for('index'))
     return render_template('add_artist.html', form=form)
 
 
-@app.route('/add_videographer', methods=['GET'])
+@app.route('/add_videographer', methods=['GET','POST'])
 def add_videographer():
-    form = ShooterForm(csrf_enabled=False)
+    form = ShooterForm()
+    if form.validate_on_submit():
+        shortname = form.shooter_short.data
+        name = form.shooter_name.data
+        name_ar = form.shooter_name_ar.data
+        ShooterForm.create_shooter(shortname,name,name_ar)
+        return redirect(url_for('index'))
     return render_template('add_videographer.html', form=form)
 
 
-@app.route('/add_venue', methods=['GET'])
+@app.route('/add_venue', methods=['GET','POST'])
 def add_venue():
-    form = VenueForm(csrf_enabled=False)
+    form = VenueForm()
+    if form.validate_on_submit():        
+        shortname = form.venue_short.data
+        venue = form.venue.data
+        venue_ar = form.venue_ar.data
+        desc = form.description.data
+        desc_ar = form.description_ar.data
+        website = form.website.data
+        VenueForm.create_venue(shortname,venue,venue_ar,desc,desc_ar,website)
+        return redirect(url_for('index'))
     return render_template('add_venue.html', form=form)
 
 if __name__ == '__main__':
