@@ -185,5 +185,11 @@ def add_venue():
         return redirect(url_for('index'))
     return render_template('add_venue.html', form=form)
 
+@app.route('/table_view', methods=['GET'])
+def table_view():
+    return 'table view'
+    ##return render_template('table_view.html')
+
+
 if __name__ == '__main__':
     manager.run()
