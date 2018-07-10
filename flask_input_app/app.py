@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from flask import Flask, render_template, session, redirect, url_for, jsonify, request, Response, flash
-from flask_script import Manager
 from flask_bootstrap import Bootstrap
 from input_form import InputForm
 import json
@@ -13,7 +12,6 @@ app.config['SECRET_KEY'] = 'vtrardem'
 app.config['DEBUG'] = True
 app.config['UPLOAD_FOLDER'] = 'G:\\work and courses\\Medrar\\uploading_testing\\'
 
-manager = Manager(app)
 bootstrap = Bootstrap(app)
 
 @app.errorhandler(404)
@@ -187,9 +185,10 @@ def add_venue():
 
 @app.route('/table_view', methods=['GET'])
 def table_view():
+    print(Utils.read_main_dict())
     return 'table view'
     ##return render_template('table_view.html')
 
 
 if __name__ == '__main__':
-    manager.run()
+    app.run()
