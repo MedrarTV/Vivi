@@ -21,7 +21,7 @@ class ArtistForm(FlaskForm):
             categories['category'] = ''
         with open('dictionaries/'+dict_name+'.csv', 'r+', encoding='utf-8', newline='') as file:
             reader = csv.DictReader(file, delimiter=',')
-            artist_id = max(item['id'] for item in reader)
+            artist_id = max(int(item['id']) for item in reader)
             print(artist_id)
             writer = csv.writer(file,delimiter=',')
             writer.writerow([str(int(artist_id)+1),name,name_ar,ids,categories['category'],biography,biography_ar,website])
@@ -46,7 +46,7 @@ class ShooterForm(FlaskForm):
         artist_id =0
         with open('dictionaries/videographers.csv', 'r+', encoding='utf-8', newline='') as file:
             reader = csv.DictReader(file, delimiter=',')
-            artist_id = max(item['id'] for item in reader)
+            artist_id = max(int(item['id']) for item in reader)
             print(artist_id)
             writer = csv.writer(file,delimiter=',')
             writer.writerow([str(int(artist_id)+1),short_name,name,name_ar])
@@ -66,7 +66,7 @@ class VenueForm(FlaskForm):
         venue_id = 0
         with open('dictionaries/venues.csv', 'r+', encoding='utf-8', newline='') as file:
             reader = csv.DictReader(file, delimiter=',')
-            venue_id = max(item['id'] for item in reader)
+            venue_id = max(int(item['id']) for item in reader)
             print(venue_id)
             writer = csv.writer(file,delimiter=',')
             writer.writerow([str(int(venue_id)+1), venue_short, venue, description, description_ar, website])
@@ -81,3 +81,14 @@ class VenueForm(FlaskForm):
     website = StringField('Website')
 
     submit = SubmitField('Submit')
+
+class ItemForm():
+    def create_single_item(item, dict_name, dict_dir='dictionaries/'):
+        item_id = 0
+        with open(dict_dir+dict_name+'.csv','r+', encoding='utf-8', newline='') as file:
+            reader = csv.DictReader(file, delimiter=',')
+            item_id = max(int(item['id']) for item in reader)
+            print(item_id)
+            writer = csv.writer(file, delimiter=',')
+            writer.writerow([str(int(item_id)+1), item])
+        return int(item_id)+1

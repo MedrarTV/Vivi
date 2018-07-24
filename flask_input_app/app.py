@@ -4,7 +4,8 @@ from flask_bootstrap import Bootstrap
 from input_form import InputForm
 import json
 import os
-from add_items import ArtistForm, VenueForm, ShooterForm
+from add_items import ArtistForm, VenueForm, ShooterForm, ItemForm
+from table_view import ArchiveItems
 from utilities import Utils
 
 app = Flask(__name__)
@@ -185,9 +186,58 @@ def add_venue():
 
 @app.route('/table_view', methods=['GET'])
 def table_view():
-    print(Utils.read_main_dict())
-    return 'table view'
-    ##return render_template('table_view.html')
+    table_dict = Utils.view_main_dict(ArchiveItems.table_keys)
+    #print(table_dict)
+    table_view = ArchiveItems(table_dict)
+    table_view.border = True
+    return render_template('items_table.html',table=table_view)
+
+
+@app.route('/edit_item/<id>', methods=['GET', 'POST'])
+def edit_item(id):
+    return str(id) +' edit item'
+
+@app.route('/clone_item/<id>', methods=['GET', 'POST'])
+def clone_item(id):
+    return str(id) +' clone item'
+
+@app.route('/search', methods=['GET','POST'])
+def search():
+    return "Search page is comming soon!"
+
+@app.route('/add_category',methods=['GET','POST'])
+def add_category():
+    if request.method == "POST":
+        print("add category accessed...")
+        category_item = request.json
+        ItemForm.create_single_item(category_item, 'categories')
+        print(category_item)
+        return redirect(url_for('index'))
+
+@app.route('/add_keyword',methods=['POST'])
+def add_keyword():
+    if request.method == "POST":
+        print("add keyword accessed...")
+        keyword_item = request.json
+        ItemForm.create_single_item(keyword_item,'keywords')
+        print(keyword_item)
+        return redirect(url_for('index'))
+
+@app.route('/add_topic',methods=['GET','POST'])
+def add_topic():
+    if request.method == "POST":
+        print("add topic accessed...")
+        topic_item = request.json
+        ItemForm.create_single_item(topic_item, 'topics')
+        print(topic_item)
+        return redirect(url_for('index'))
+
+
+@app.route('/add_event_type', methods=['GET', 'POST'])
+def add_event_type():
+    return 'add event type'
+
+
 
 
 if __name__ == '__main__':

@@ -1,29 +1,35 @@
-/* $(function () {
-    $.ajax({
-        url: '{{ url_for("autocomplete") }}'
-    }).done(function (data) {
-        $('#selected_venue').autocomplete({
-            source: data,
-            minLength: 2
-        });    
-    });
-}); */
-
-/*
-VARIABLES TO STORE THE IDS OF THE NEEDED DICTS
-venue
-artists
-curator
-interviewer
-inst
-videographer
-event_type
-title_of_edited_video
-keywords
-*/
 
 console.log('HER    HER HER     Her');
-var ids =[]
+
+
+
+
+function AddKeyword(itemUrl, itemVal) {
+    $.ajax({
+        type: "POST",
+        url: itemUrl,
+//        data: JSON.stringify(itemVal, null, '\t'),
+        data: JSON.stringify(itemVal),
+        contentType: 'application/json;charset=UTF-8',
+        success: function () {
+            alert(itemVal + ' added!');
+            window.location.reload();
+        },
+        error: function(){
+            alert('Error!!!')
+        }
+        
+    });
+    console.log(itemVal);
+ }
+
+
+
+function AddTopic() { }
+function AddCategory() { }
+function AddEventType(){}
+
+
 
 function AutoComplete(matchFieldName, resultFieldName, lookupURL) {
     $('#' + matchFieldName).autocomplete({

@@ -206,8 +206,7 @@ class Utils():
         except Exception as e:
             print('ERROR >>>> ', e)
     
-    def read_main_dict():
+    def view_main_dict(table_keys):
         with open('dictionaries/main_dict.csv', 'r', encoding='utf-8') as f:
-            reader = csv.DictReader(f, delimiter=',')
-            print(reader)
-            return [i['id'] for i in reader]
+            reader = csv.DictReader(f, delimiter=',')                        
+            return [dict(i) for i in reader]

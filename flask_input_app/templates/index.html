@@ -20,27 +20,9 @@
           allowClear: true          
         });
         $("#featuring").select2();
-        $("#topics").select2();
-        //AutoComplete('artists', 'selected_artists', '{{ url_for("artists") }}');
+        $("#topics").select2();      
       });
  
-      function palValidateSignUp() {
-          $(function () {
-            $('#btnSignUp').click(function () {
-              $.ajax({
-                url: '/signUp',
-                data: $('form').serialize(),
-                type: 'POST',
-                success: function (response) {
-                  console.log(response);
-                },
-                error: function (error) {
-                  console.log(error);
-                }
-              });
-            });
-          });
-        }
     </script>
 {% endblock %}
 
@@ -82,10 +64,16 @@
     {{ wtf.form_field(form.footage_desc) }}
     {{ wtf.form_field(form.footage_desc_ar) }}
     {{ wtf.form_field(form.categories) }}
+    <input type="text" id="category" value="enter a category...">
+    <input type="button" value="Add Category" onclick="AddKeyword('{{ url_for("add_category") }}',$('#category').val())">
     </div>
     <div>
-    {{ wtf.form_field(form.topics) }}
+    {{ wtf.form_field(form.topics) }}      
+    <input type="text" id="topic" value="enter a topic...">
+    <input type="button" value="Add Topic" onclick="AddKeyword('{{ url_for("add_topic") }}',$('#topic').val())">
     {{ wtf.form_field(form.keywords) }}
+    <input type="text" id="keyword" value="enter a keyword...">
+    <input type="button" value="Add Keyword" onclick="AddKeyword('{{ url_for("add_keyword") }}',$('#keyword').val())">
     {{ wtf.form_field(form.notes) }}
     {{ wtf.form_field(form.title_of_edited_video) }}
     </div>
