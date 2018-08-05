@@ -5,7 +5,7 @@ from input_form import InputForm
 import json
 import os
 from add_items import ArtistForm, VenueForm, ShooterForm, ItemForm
-from table_view import ArchiveItems
+from table_crud import ArchiveItems
 from utilities import Utils
 
 app = Flask(__name__)
@@ -195,11 +195,16 @@ def table_view():
 
 @app.route('/edit_item/<id>', methods=['GET', 'POST'])
 def edit_item(id):
-    return str(id) +' edit item'
+    return str(ArchiveItems.get_row(int(id)-1))
 
 @app.route('/clone_item/<id>', methods=['GET', 'POST'])
 def clone_item(id):
-    return str(id) +' clone item'
+    row =ArchiveItems.get_row(int(id)-1)
+    print(row['root_dir'])
+    form = InputForm()
+    #form = form.populate_obj(row)
+    form.data = row
+    return render_template('index.html', form=form)
 
 @app.route('/search', methods=['GET','POST'])
 def search():
