@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, FileField, SelectField, TextAreaField, SelectMultipleField, TextField, SelectMultipleField
+from wtforms import StringField, SubmitField, FileField, SelectField, TextAreaField, SelectMultipleField, TextField, SelectMultipleField, DateField
 from wtforms.validators import Required, Length, DataRequired, Optional
-from wtforms.fields.html5 import DateField
+
+#from wtforms.fields.html5 import DateField
 import csv
 
 
@@ -54,12 +55,12 @@ class InputForm(FlaskForm):
 
     #the form's elements by order
     root_dir = StringField('Root Directory *', validators=[DataRequired()])
-    event_title = StringField('Event Title *', validators=[DataRequired(),Length(max=120)])
+    event_title = StringField('Event Title *', validators=[DataRequired(),Length(max=170)])
     event_title_ar = StringField('Event Title AR')
 
-    current_date = DateField('Shooting Date *',format='%Y-%m-%d' ,validators=[DataRequired()])
-    event_date = DateField('Event Date', format='%Y-%m-%d',validators=[Optional()])
-    event_date_until = DateField('Until', format='%Y-%m-%d',validators=[Optional()])
+    current_date = DateField('Shooting Date *',format='%d-%m-%Y' ,validators=[DataRequired()])
+    event_date = DateField('Event Date', format='%d-%m-%Y', validators=[Optional()])
+    event_date_until = DateField('Until', format='%d-%m-%Y',validators=[Optional()])
 
     ## ONE FIELD ONLY
     videographer = SelectField('Videographer *', validators=[DataRequired()])

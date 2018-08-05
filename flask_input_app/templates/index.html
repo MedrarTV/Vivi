@@ -6,8 +6,6 @@
     <script type="text/javascript" src="../static/auto_complete.js"></script>
     <script type="text/javascript">
       $(function(){
-        //$("#current_date").datepicker();
-        //$("#event_date").datepicker();
         $("#venue").select2();
         $("#artists").select2();        
         $("#curator").select2();
@@ -21,12 +19,16 @@
         });
         $("#featuring").select2();
         $("#topics").select2();      
-        $("#current_date").datetimepicker({ format: 'dd-mm-yyyy', });
-        $("#event_date").datetimepicker({ format: 'dd-mm-yyyy', });
-        $("#event_date_until").datetimepicker({ format: 'dd-mm-yyyy', });
-      });
-
-       
+        $('#current_date').datepicker({
+          dateFormat: 'dd-mm-yy'
+        });
+        $('#event_date').datepicker({
+          dateFormat: 'dd-mm-yy'
+        });
+        $('#event_date_until').datepicker({
+          dateFormat: 'dd-mm-yy'
+        });
+      });       
     </script>
 {% endblock %}
 
