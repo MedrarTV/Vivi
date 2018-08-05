@@ -93,7 +93,7 @@ class Utils():
 
     def group_dict(ids, dict_keys=['name', 'name_ar'], dict_name='people', dicts_dir='dictionaries/', separator=';'):
 
-        dictionary = pd.read_csv(dicts_dir+dict_name+'.csv')
+        dictionary = pd.read_csv(dicts_dir+dict_name+'.csv',error_bad_lines=False)
         res_dict = dict.fromkeys(dict_keys)
 
         for key in res_dict.keys():
