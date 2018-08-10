@@ -1,5 +1,243 @@
 id,title,title_ar,url
-1,The truth about fiction,الواقع في الخيال,https://www.youtube.com/watch?v=S3g-DHKMOcA
-2,Cairo Documenta,كايرو دوكيومنتا,https://youtu.be/4OF0y93KR-o
-3,Impromptu: JoeNamy on SB13,خاطر: جو نعمه عن بينالي الشارقة ١٣,https://vimeo.com/244105428
-4,Ahmed El Shaer: Hybrid Spaces,أحمد الشاعر: مساحات هجينة,https://vimeo.com/260092702
+1,Aysha,عايشة,https://youtu.be/uHXrSwmlzUA
+2,El Warsha Troupe DCAF 2017,,
+3,DCAF 2017 Urban Visions,,
+4,Raed Yassin: Yassin Haute Couture,رائد ياسين: أزياء ياسين,https://youtu.be/BXRzSkYbOLA
+5,Ahmed El Shaer: Hybrid Spaces,أحمد الشاعر: مساحات هجينة,https://vimeo.com/260092702
+6,Again and again and again,مرة تلو الأخرى تلو الأخرى,https://vimeo.com/255722113
+7,"Nicole Seiler: (Living-room) dancers, Cairo",نيكول زيلر: الراقصون المبدعون، القاهرة,https://vimeo.com/236651299
+8,D-CAF 2018: The second copy: 2045,مهرجان دي-كاف ٢٠١٨: النسخة الثانية: ٢٠٤٥,https://www.youtube.com/watch?v=9_ptaYRo24w&t=53s
+9,Cairotronica: A Future of Possibilities,كايروترونيكا: مستقبل متعدد الاحتمالات,https://www.youtube.com/watch?v=iDxYRXmSHR4
+10,Tri-City Photo Marathon 2018 in Cairo,ماراثون الصورة ٢٠١٨ بالقاهرة,https://www.youtube.com/watch?v=zjMgH_bWGTM
+11,Mapping Possibilities V x Cairotronica,مابينج بوسيبيليتيز ٥ في كايروترونيكا,https://www.youtube.com/watch?v=wDOWMFvigkw
+12,D-CAF 2018 promo,برومو دي كاف ٢٠١٨,https://youtu.be/pz9m-fEUqVA
+13,D-CAF 2018: Ta Sakena,مهرجان دي كاف ٢٠١٨: تاء ساكنة,https://www.youtube.com/watch?v=rOl3guM5p_U
+14,Ala Younis: Plan (Fem) for Greater Baghdad,آلاء يونس: خطة بغداد الكبرى,https://www.youtube.com/watch?v=C7D0wkpCJeQ
+15,Zineb Sedira: Air Affairs and Maritime NonSense,زينب سديرة: شؤون جوية..هراء بحري,https://www.youtube.com/watch?v=z49biJr7X3E
+16,"Wael Shawky, The Song of Roland: The Arabic Version",وائل شوقي، أغنية رولاند: النسخة العربية,https://www.youtube.com/watch?v=aJJy7V2g2Ek
+17,The truth about fiction,الواقع في الخيال,https://www.youtube.com/watch?v=S3g-DHKMOcA
+18,"The Art of Arts, part I",فن الفنون، الجزء الأول,https://www.youtube.com/watch?v=Lpv5by7UZIE
+19,Cairo Documenta,كايرو دوكيومنتا,https://www.youtube.com/watch?v=4OF0y93KR-o
+20,You Closed Your Eyes in Order to See the Unseen,أقفلت عينيك حتى تبصر اللا مرئي,https://www.youtube.com/watch?v=DLYVOAHo6Sc
+21,Lemon jam never killed anyone,مربى الليمون لا تقتل أحداً,https://www.youtube.com/watch?v=l5ak6OyRYvI
+22,Mohamed El Maghraby: I thought I was the only Cyborg,محمد المغربي: ظننتُ أنني السايبورغ الوحيد,https://www.youtube.com/watch?v=XZgleOw9Kws
+23,Impromptu: Oscar Debs on SB13,خاطر: أوسكار دبس عن بينالي الشارقة ١٣,https://www.youtube.com/watch?v=jRA5WncX3v0
+24,Impromptu: HG Masters on SB13,خاطر: ه ج ماسترز عن بينالي الشارقة ١٣,https://www.youtube.com/watch?v=fdvY-aN2v2U
+25,Impromptu: Lamia Joreige on SB13,خاطر: لمياء جريج عن بينالي الشارقة ١٣,https://www.youtube.com/watch?v=Pxf1GvPwWTY
+26,Impromptu: Marwan Rechmaoui on SB13,خاطر: مروان رشماوي عن بينالي الشارقة ١٣,https://www.youtube.com/watch?v=0ypQL-9BQMw
+27,Impromptu: Dima Hamadeh on SB13,خاطر: ديمة حمادة عن بينالي الشارقة ١٣,https://www.youtube.com/watch?v=qYhaQ5Ivtxk
+28,Impromptu: Joe Namy on SB13,خاطر: جو نعمه عن بينالي الشارقة ١٣,https://www.youtube.com/watch?v=Z_9ImZ4xpT8
+29,Marwan Elgamal: A Green House,مروان الجمل: بيت أخضر,https://www.youtube.com/watch?v=6WfVkqy0BRQ
+30,The Pick: Soufiane Ouissi at SB13,خاطر: سفيان ويسي ببينالي الشارقة ال١٣,https://www.youtube.com/watch?v=bkhqlv2j0Vs
+31,The Pick: Stefanie Schulte at SB13,خاطر: ستيفاني شولته ببينالي الشارقة ال١٣,https://www.youtube.com/watch?v=cDyBIJweG4E
+32,The Pick: Rachel Dedman at SB13,خاطر: رايتشيل ديدمان ببينالي الشرقة ١٣,https://www.youtube.com/watch?v=d5S3DNLRAQE
+33,The Pick: Ghassan Salhab at SB13,خاطر: غسان سلهب ببينالي الشارقة ١٣,https://www.youtube.com/watch?v=kGl3lvC1haE
+34,The Pick: Nat Muller at SB13, خاطر: نات مولرببينالي الشارقة ١٣,https://www.youtube.com/watch?v=qq2R3w2z9vQ
+35,"Oh, I'm sorry! I didn't mean to scratch your face  ",آه، آسف جدًا! لم أقصد أن أصيب وجهك,https://www.youtube.com/watch?v=qi7E-bA1F0k
+36,The Pick: Rayya Badran at SB13 ,خاطر: ريا بدران ببينالي الشارقة ١٣,https://www.youtube.com/watch?v=usphJhwSCx4
+37,The Pick: Francis Mckee at SB13 ,خاطر: فرانسيس مكي ببينالي الشارقة ١٣,https://www.youtube.com/watch?v=HTbPvhfS9ig
+38,8th Cairo Video Festival,مهرجان القاهرة الثامن للفيديو,https://www.youtube.com/watch?v=1NQJHsbRuy8
+39,Sidewalk Salon: 1001 Street Chairs of Cairo ,صالون الرصيف: ألف كرسي و كرسي في القاهرة,https://www.youtube.com/watch?v=u3pZi5P1iOA
+40,Discursiveness ,استطراد,https://www.youtube.com/watch?v=zyeGbPeOfKE
+41,Cactus Flower: The Making ,كواليس زهرة الصبار,https://www.youtube.com/watch?v=ALWycGwAFFg
+42,D-CAF 2016: Spotlight on inclusive arts, دي كاف ٢٠١٨: نظرة على الفنون الشاملة,https://www.youtube.com/watch?v=EE7k5wlxhmc
+43,Roznama 5 ,روزنامة ٥,https://www.youtube.com/watch?v=PH80qhPD9R0
+44,Modern Egypt Project: the British Museum in Cairo  ,مشروع مصر الحديثة للمتحف البريطاني,https://www.youtube.com/watch?v=3J428rRO7w0
+45,Cairo Now! A City Incomplete,القاهرة! مدينة غير مكتملة,https://www.youtube.com/watch?v=hpfIrZrTnTY
+46,D-CAF 2016: Arab Arts Focus,الملتقى الدولى للفنون العربية المعاصرة,https://www.youtube.com/watch?v=tYLwXKnhULg
+47,D-CAF 2016: Performing Arts,مهرجان دي-كاف ٢٠١٦: برنامج العروض الأدائية,https://www.youtube.com/watch?v=KVOIOH0JQqI
+48,D-CAF 2016: Madeeh,مهرجان دي-كاف ٢٠١٦: مديح,https://www.youtube.com/watch?v=yQrtE2lrf4M
+49,Encoding,تكويد,https://www.youtube.com/watch?v=Nre5_PM84iM
+50,The Big O,شبق,https://www.youtube.com/watch?v=oSV144k2jwE
+51,Two Suns in a Sunset,شمسان في المغيب,https://www.youtube.com/watch?v=coUFGa52Zfk
+52,The Time is Out of Joint,وقت خارج الزمن,https://www.youtube.com/watch?v=0NzXv7oaAdM
+53,DCAF Fundraising campaign,حملة دي كاف لجمع التبرعات,https://youtu.be/wXlg1EMGvW4
+54,Gaze - Stopgap Dance Company ,نظرة - مؤسسة ستوبجاب للرقص,https://www.youtube.com/watch?v=D8l_hZG8EDU
+55,Naema’s Office is Bleeding Exhibition 2,معرض مكتب نعيمة ينزف ٢,https://www.youtube.com/watch?v=WsIiLNUEh2k
+56,"CASTIGAT RIDENDO MORES, Rami Abadir",رامي أبادير في رووم,https://youtu.be/dq6SNFvTdew
+57,Something Else “OFF Biennale Cairo” شىء اّخر “OFF Biennale Cairo”,شىء اّخر,https://www.youtube.com/watch?v=9WKVb4WcqDQ
+58,Releasing DISTORSHY from NMR pedals,إطلاق دسِ طُرشي من بدّالات النمر,https://www.youtube.com/watch?v=jhOTHSJ5KGg
+59,A Season in Hell,فصل في الجحيم,https://www.youtube.com/watch?v=qlFZsTDzCt4
+60,SB12: Hassan Khan at The Flying Saucer,بينالي الشارقة ال١٢: حسن خان في مبنى الطبق الطائر,https://www.youtube.com/watch?v=0p5xnEZEsrI
+61,Cairobserver's discussion: University,حلقة نقاش مشاهد القاهرة: الجامعة,https://www.youtube.com/watch?v=sX9p1lC13w8
+62,Cairobserver 5th issue launch, إطلاق العدد الخامس من مشاهد القاهرة,https://www.youtube.com/watch?v=7aPy8yeu1fQ
+63,Shady El Noshokaty: Colony - Latitude,شادي النشوقاتي: مستعمرة: خطوط العرض,https://www.youtube.com/watch?v=K8exwNclers
+64,Roznama 4,روزنامة ٤,https://www.youtube.com/watch?v=SqVpICnBlnw
+65,Cairo Contemporary Dance Center,مركز القاهرة للرقص المعاصر,https://www.youtube.com/watch?v=JpvMm4xZGww
+66,Ali Abdel Mohsen,علي عبد المحسن,https://www.youtube.com/watch?v=Yg0retsORi8
+67,Ahmed Badry: The Provisionary That Lasts,أحمد بدري: المؤقت الدائم,https://www.youtube.com/watch?v=YGAFvsyAjyI
+68,"The good, the bad and the crimson shoe",الطيب والشرس والحذاء القرمزي,https://www.youtube.com/watch?v=ihB3Ev4T9tw
+69,Hussein Sherbini: Electro Chaabi,حسين شربيني: إلكترو شعبي,https://www.youtube.com/watch?v=8WYWWU2xmmU
+70,Hany Rashed: Bulldozer,هاني راشد: البلدوزر,https://www.youtube.com/watch?v=IreYGzQJ_IA
+71,Marjet Wessels Boer on public art,مارخيت فيسيلز بوير عن الفن العام,https://www.youtube.com/watch?v=ZnKop7TjLls
+72,Eugenia Morpurgo on public art,يوجينيا موربورغو عن الفن العام,https://www.youtube.com/watch?v=BRYhDM_AExs
+73,Alif: Aynama-Rtama,الألف: أينما ارتمى,https://www.youtube.com/watch?v=oliUKulLXYA
+74,Ahmed's Revenge and other untold stories,أحمد ينتقم ومرويات أخرى لم تتلى بعد,https://www.youtube.com/watch?v=osXHoCdLDxY
+75,From rags to riches workshop,ورشة من المهمل إلى الثمين,https://www.youtube.com/watch?v=6D9jzzkbzoQ
+76,Hend Samir: Chocolate bar of the future,هند سمير: شوكولاتة المستقبل,https://www.youtube.com/watch?v=Uqm4VNQ0F3E
+77,SB12: Uriel Barthelemi's Souls Landscapes,بينالي الشارقة ال١٢: معالم الروح لأوريل بارتيليمي,https://www.youtube.com/watch?v=lzjst6ha7EI
+78,Naema's office is bleeding,مكتب نعيمة ينزف,https://www.youtube.com/watch?v=WtZDoNtmvMs
+79,This is the time. This is the record of time,هذا هو الزمن. هذا هو سجل الزمن,https://www.youtube.com/watch?v=bOGGcXRPjtE
+80,Farida El Gazzar: Dream City,فريدة الجزار: مدينة الأحلام,https://www.youtube.com/watch?v=lOZmxXR3YKQ
+81,D-CAF 2017 music concerts,برنامج الموسيقى في دي كاف ٢٠١٧,
+82,Hora Theater - Performance D-CAF 2017,مسرح هورا في دي كاف ٢٠١٧,
+83,CAMOCA- Visual arts program D-CAF 2017,متحف القاهرة للفن الحديث,
+84,D-CAF 2017 promo,برومو دي كاف ٢٠١٧,
+85,D-CAF 2016 promo,برومو مهرجان دي كاف ٢٠١٦ القصير,https://youtu.be/mHRUvV4KpNc
+86,D-CAF 2015 making,كواليس دي كاف ٢٠١٥,https://youtu.be/xqcriXfG5M4
+87,DCAF 2015 music program,برنامج الموسيقى بمهرجان دي-كاف,https://www.youtube.com/watch?v=amyByojmVUE
+88,DCAF 2015: Boikutt,مقاطعة بمهرجان دي-كاف,https://www.youtube.com/watch?v=3fcVMQmF8V4
+89,Highlights from DCAF 2015,مهرجان وسط البلد الرابع للفنون المعاصرة,https://www.youtube.com/watch?v=0uGOX9gGe3U
+90,SB 12: Nikhil Chopra's Use like water,بينالي الشارقة ال١٢: استخدمه كالماء لنيكيل شوبرا,https://www.youtube.com/watch?v=IRoK5dDf5iY
+91,DCAF 2015: An Iliad,الياذة بمهرجان دي-كاف,https://www.youtube.com/watch?v=_LLVTirr5yY
+92,Khaled Kaddal: Trapped sounds,خالد قدال: أصوات محاصرة,https://youtu.be/jbatf7WsmQc
+93,DCAF 2015: Mission Roosevelt in Cairo,المهمة روزفلت في القاهرة,https://www.youtube.com/watch?v=aBKZm0HiVAA
+94,DCAF 2015: Abyusif,أبيوسف في مهرجان دي-كاف,https://youtu.be/zrWVQMC3ioQ
+95,"DCAF 2015: A Micro History of World Economics, Danced","تاريخ ""مختصر"" لاقتصاد العالم بالرقص",https://www.youtube.com/watch?v=eiUH2K0gg0s
+96,SB12: Adrian Villar Rojas' Planetarium,بينالي الشارقة ال١٢: القبة لأدريان فيلار روخاس,https://www.youtube.com/watch?v=E19PW5QUhkA
+97,DCAF 2015: Boris Brejcha,بوريس بريتشا بمهرجان دي-كاف,https://www.youtube.com/watch?v=9aUvuiyezYE
+98,Highlights from Sharjah Biennial 12 open week,من بينالي الشارقة ال١٢,https://www.youtube.com/watch?v=GJRXx3pBFNU
+99,New vision for 13th Festival of Young Creators,رؤية جديدة لمهرجان الشباب المبدع ال١٣,https://www.youtube.com/watch?v=6dpAcZUqe_s
+100,Kareem Lotfy and Andeel: New Folder (2),كريم لطفي وأنديل: نيو فولدر ٢,https://www.youtube.com/watch?v=qQWAAu1StAI
+101,Painter Ahmed Sabry on the 'Fifth District',أحمد صبري عن التجمع الخامس,https://www.youtube.com/watch?v=oT7omN_ls5o
+102,Studio Visit: Raed Yassin,زيارة لمرسم رائد ياسين,https://www.youtube.com/watch?v=Y474uEQ1f1I
+103,el Seed and Aya Tarek discuss calli-graffiti,السيد وآية طارق عن الجرافيتي,https://www.youtube.com/watch?v=1v-9Y1yHJJc
+104,Burj el Imam album at 100Copies,من ألبوم برج الإمام بمساحة ١٠٠نسخة,https://youtu.be/UuVtgMPtK_k
+105,A rolling stone gathers no moss,الطحالب لا تنمو علي الحجر المتدحرج,https://www.youtube.com/watch?v=yTPQA1BSatY
+106,Cairo Downtown Passages Redesign,إعادة تصميم ممرات وسط البلد,https://www.youtube.com/watch?v=BDv8dShGuLA&t=1s
+107,Rami Abadir and Mostafa El Sayed: Shawakish,رامي أبادير ومصطفى السيد: شواكيش,https://youtu.be/cikt1atKCrk
+108,Nada Baraka: Fractals,ندى بركة: كسور,https://youtu.be/Eaz_FEy0tGs
+109,The Guide for using life,دليل استخدام الحياة,https://www.youtube.com/watch?v=D3Q7KbkxNnM
+110,Maurice Louca: Salute the Parrot,موريس لوقا: بنحيي البغبغان,https://www.youtube.com/watch?v=sqHf3V11Yw4
+111,Third Eye: Photography,عين تالتة: فوتوغرافيا,https://www.youtube.com/watch?v=DMlmYqXhbBw
+112,Alien Encounters,رسالة من الأخ من الكوكب الثاني,https://www.youtube.com/watch?v=3QuPtHip8eU
+113,25th Youth Salon,صالون الشباب الخامس والعشرون,https://www.youtube.com/watch?v=PInlt4848Ro&t=279s
+114,Roznama 3,روزنامة ٣,https://www.youtube.com/watch?v=aRVlQ0yWC80
+115,Mohmed Abla Painting Award,جائزة محمد عبلة للتصوير,https://www.youtube.com/watch?v=8taS_3qgUSk
+116,Lina Hashim Photography,فوتوغرافيا لينا هاشم,https://www.youtube.com/watch?v=crlLnt4Dsjg
+117,Measuring the last breaths of time on a fading scale ,قياس أنفاس الزمن الآخيرة على مقياس يختفى,https://www.youtube.com/watch?v=1423iss2wpY
+118,Nadah El Shazly: Ateyaton,ندا الشاذلي: آتية,https://youtu.be/heCxtlI3GME
+119,Ahmed El Samra: Filmmaker from Alexandria ,أحمد السمرة: مخرج من الأسكندرية,https://www.youtube.com/watch?v=BvXiHTcJF1w
+120,Mona Marzouk: Trayvon ,منى مرزوق: ترايفون,https://www.youtube.com/watch?v=Da4Reuc545w
+121,"Maurice Louca, It will set ",موريس لوقا، شرق راح تغرب,https://youtu.be/fD3t6nG0Xfw
+122,Soren Thilo Funder ,سورين تيلو فوندر,https://www.youtube.com/watch?v=YCAhGNZRHU0
+123,Larissa Sansour ,لاريسا صنصور,https://www.youtube.com/watch?v=-eBnUvp-_oA
+124,Kenneth Balfelt ,كينيث بالفلت,https://www.youtube.com/watch?v=LkS88u260xs
+125,Islam Kamal: Filmmaker from Alexandria ,اسلام كمال: مخرج من الأسكندرية,https://www.youtube.com/watch?v=ojfSg-GU4Xo
+126,Gheith Al-Amine ,غيث الأمين,https://youtu.be/jS1h96bI1rs
+127,A Guest Without A Host Is A Ghost ,ضيف بدون مضيف هو شبح,https://www.youtube.com/watch?v=-9b8yW_QkSU
+128,Next to here ,بالقرب من هنا,https://www.youtube.com/watch?v=6XD0Pb4MCdA
+129,Hassan Khan: Taraban,حسن خان: طرباً,https://www.youtube.com/watch?v=k0vGwV525sg
+130,Interruption ,انقطاع,https://www.youtube.com/watch?v=kTLlfpexWYE
+131,Analog sound ,صوت أنالوج,https://youtu.be/jjlZ5wqHxOw
+132,Sarah Samy at NSA,سارة سامي في ملحق غروب على النيل,https://www.youtube.com/watch?v=Evo_he7JlUU
+133,Samir Nabil (Object Obscure) ,سمير نبيل,https://youtu.be/u_rZvgCBp8s
+134,Hadtha jam ,بروفة حادثة,https://youtu.be/dP4A781LQv4
+135,Ghassan Salhab: Making of 'The Valley' ,غسان سلهب: من كواليس فيلم الوادي,https://www.youtube.com/watch?v=E9YzEZNBJuY
+136,Yasmine Hamdan: Bala Tantanat,ياسمين حمدان: بلا طنطنات,https://youtu.be/2RDu4zwJodg
+137,Maspero II ,ماسبيرو: الجزء الثاني,https://www.youtube.com/watch?v=2vTBCOVm-pc
+138,Lingering in vicinity ,تلكؤ,https://www.youtube.com/watch?v=xVvu48TSR8c
+139,The Wonder Box ,صندوق العجب,https://www.youtube.com/watch?v=IUyEpluI-WM
+140,Yasmine Hamdan ,ياسمين حمدان,https://youtu.be/qZlfbgKmiUM
+141,Visual Lab Rats,فئران التجارب البصرية,https://www.youtube.com/watch?v=KCoD_iwsTi8
+142,Telepoetic with Rami Abadir,تيليبوتيك مع رامي أبادير,https://youtu.be/95Ketgv0rDE
+143,Telepoetic: Ensehab ,تيليبوتيك: انسحاب,https://youtu.be/77HYjbiAKtE
+144,Toys,لعب أطفال,https://www.youtube.com/watch?v=UTfiGsKUxvs
+145,The Surface of Spectral Scattering ,انتشار طيفي,https://www.youtube.com/watch?v=G-3StZMQavg
+146,Lost Referents of Some Attraction ,مرجعيات مفقودة متواضعة الجاذبية,https://www.youtube.com/watch?v=rfEjnnAR2b4
+147,El Rass ,الراس,https://youtu.be/LV3JhquQQkU
+148,Mehdi Haddab,مهدي حداب,https://youtu.be/vbONkMvcWxI
+149,"Sun Ra in Egypt, 1971 ",صن رع في مصر، ١٩٧١,https://youtu.be/uzdZxTFIuSM
+150,Al Araba Al Madfuna in Cairo ,العرابة المدفونة في القاهرة,https://www.youtube.com/watch?v=P7kRNdVyFKQ
+151,Layer of green ,مستوى أخضر,https://www.youtube.com/watch?v=M12U0_jplGE
+152,Hassan Khan: Taraban ,حسن خان: طرباً,https://www.youtube.com/watch?v=k0vGwV525sg
+153,Hydrogen ,هيدروجين,https://www.youtube.com/watch?v=BTC5_iR8FYo
+154,Fictional Museum ,المتحف الإفتراضي,https://www.youtube.com/watch?v=ibjT1JVcp50
+155,Zeid Hamdan ,زيد حمدان,https://youtu.be/Ra1jfFAGVH8
+156,Doa Aly ,دعاء علي,https://www.youtube.com/watch?v=IUKJsBDcvbw
+157,Painter on a study trip ,رسام في رحلة دراسية,https://www.youtube.com/watch?v=4IaoZh76XVg
+158,A portrait of AFAC ,عن آفاق,https://www.youtube.com/watch?v=phldyyJ-XmA
+159,Hashem L Kelesh,هاشم الكلش,https://youtu.be/vjKTMFi0aPA
+160,March Project,معرض مارس,https://www.youtube.com/watch?v=4s3t7iKtDk0
+161,La voix est libre,الأصوات الحرة,https://www.youtube.com/watch?v=XPvJyGmIdw4
+162,Yasmine Hamdan - Nag,ياسمين حمدان - ناج,https://youtu.be/RPSwpLMzw5I
+163,Violence Lointaine ,عنف بعيد,https://www.youtube.com/watch?v=oQZVSLvKizw
+164,Make room for me ,عراك,https://www.youtube.com/watch?v=Y4fWHi5M6FY
+165,Islam Chipsy @D-CAF ,إسلام شيبسي في دي كاف,https://youtu.be/oRlUXXlc_eU
+166,On the road ,على الطريق,https://www.youtube.com/watch?v=LTvk96l_YGo
+167,Andeel ,أنديل,https://youtu.be/JM8rsuGjOYw
+168,Cinderella's Tales ,حكايات سندريلا,https://www.youtube.com/watch?v=ilwJfabzVWE
+169,Hello Zimo ,هالو زيمو,https://youtu.be/_FQ2mXlfuew
+170,Meeting Points 7 ,نقاط لقاء ٧,https://www.youtube.com/watch?v=8BMOATrN9Vw
+171,The Passions of the Trash Drive ,غرام دافع القمامة,https://www.youtube.com/watch?v=FRVYCtJCK6I
+172,Dawawine,دواوين,https://www.youtube.com/watch?v=1ZNUVrnEIB8
+173,The 5th 2B Continued Festival,مهرجان البقية تأتي الخامس,https://www.youtube.com/watch?v=JgJUUUmmdCE
+174,Medrar TV,مدرار تي في,https://www.youtube.com/watch?v=J81U1LajsU4
+175,References ,مراجع,https://www.youtube.com/watch?v=vtkHYMutvqk
+176,98Weeks Research/Project Space ,مساحة ٩٨أسبوع,https://www.youtube.com/watch?v=gZLSryHNncY
+177,Horreya or Kharya ,حْرية,https://www.youtube.com/watch?v=Ke8aSsmhH1M
+178,Cut and Paste ,قص ولصق,https://www.youtube.com/watch?v=7m1oCA-SDbI
+179,A portrait of artist Monira Al Qadiri ,عن الفنانة منيرة القديري,https://www.youtube.com/watch?v=AHeMEvnPKsU
+180,The 24th Youth Salon ,صالون الشباب ال٢٤,https://www.youtube.com/watch?v=vyC-dB_dDWM
+181,Cairo Berlin exhibition,معرض كايرو برلين,https://www.youtube.com/watch?v=Y9q89N6rs58
+182,Brain Damage ,تلف في الدماغ,https://www.youtube.com/watch?v=06P-r16NRiU
+183,Exposure 2013,عتبات ٢٠١٣,https://www.youtube.com/watch?v=1FJw7PgQiIs
+184,Augmented Airspace , الفضاء المعدل,https://www.youtube.com/watch?v=DelIr7qlS8Q
+185,Monopoly Beirut ,مونوبولي بيروت,https://www.youtube.com/watch?v=3Dd7_MBY7Js
+186,Roznama 2 ,روزنامة ٢,https://www.youtube.com/watch?v=2ThbVmShJ5Y
+187,Zaat ,ذات,https://youtu.be/NPZ3MUtfeSU
+188,This is a Dream Come True ,حلم واتحقق,https://www.youtube.com/watch?v=6qIJTE-ZX_Y
+189,On My Forest Land,على أرض غابتي,https://www.youtube.com/watch?v=z7B7zjUrvVI
+190,My Nineties ,تسعيناتي,https://youtu.be/PhJSMOykuGo
+191,Made in Lebanon ,صناعة لبنانية,https://www.youtube.com/watch?v=6XZSMRo5ZTc
+192,RETUNE CD release concert ,حفل إصدار ألبوم ريتيون,https://youtu.be/VOpHLkMo_-0
+193,500px Worldwide Meetup ,500px اللقاء العالمي,https://www.youtube.com/watch?v=FsLbSPy65I0
+194,Scenography workshop by Hussein Baydoun ,ورشة تصميم الديكور المسرحي لحسين بيضون,https://www.youtube.com/watch?v=X60dwfA6X2k
+195,CCDC dance performance ,عرض مركز القاهرة للرقص المعاصر,https://www.youtube.com/watch?v=5lonfnjRoMc
+196,Khadra 2013 ,خضرا ٢٠١٣,https://youtu.be/coKG5wqwuGs
+197,Face the vitrine,وش الفترينة,https://www.youtube.com/watch?v=ycXrsjeABVc
+198,SMSlingshot,نبلة الرسائل القصيرة,https://www.youtube.com/watch?v=lrhAoAt1Gow
+199, Collage workshop exhibition led by Hany Rashed,معرض نتاج ورشة كولاج للفنان هاني راشد,https://www.youtube.com/watch?v=_Nqk1Har4Wc
+200,It's never too late to talk about love exhibition ,معرض نستطيع دائما أن نتحدث عن الحب,https://www.youtube.com/watch?v=vRSEglrVxfQ
+201,A portrait of Tunisian artist Nicene Kossentini ,لمحات عن الفنانة التونسية نيسان قسطنطيني,https://www.youtube.com/watch?v=28I4m37o-Ng
+202,Laaroussa ,العروسة,https://www.youtube.com/watch?v=C0YgSDia4SI
+203," A discussion of ""17 and in AUC"" by Hassan Khan","نقاش حول ""١٧ وفي الجامعة الأمريكية"" لحسن خان",https://www.youtube.com/watch?v=-ZXXBcFrDTU
+204,Rhino Story by Ahmed Sabry & Mohamed Abdelkarim ,قصة الكركدن لأحمد صبري ومحمد عبدالكريم,https://www.youtube.com/watch?v=O9p0F1Lg85M
+205,Journey Around My Living Room by Hala Elkoussy ,معرض رحلة في غرفة معيشتي لهالة القوصي,https://www.youtube.com/watch?v=eg42mKUZy0o
+206,Dina El Wedidi - Wehdah ,دينا الوديدي - وحده,https://youtu.be/CTrjFYe4yPI
+207,Emel Mathlouthi - Ya Tounes Ya Meskina,آمال مثلوثي - يا تونس يا مسكينة,https://youtu.be/OS_aPPn1GtU
+208,The 2nd Downtown Contemporary Arts Festival ,مهرجان وسط البلد الثاني للفنون المعاصرة,https://youtu.be/5_SP9yK2vyo
+209,World premiere of Alice at D-CAF ,العرض الأول لأليس بمهرجان دي كاف,https://www.youtube.com/watch?v=fAJL1ZgmQxk
+210,Shorbet Rosas by Shorba ,شوربة رصاص، شوربة,https://youtu.be/y-hBX5h8YSY
+211,PhotoCairo 5: more out of curiosity than conviction ,فوتو كايرو ٥: عن فضول وليس اقتناع,https://www.youtube.com/watch?v=f6XcVxBhHzQ
+212,Covering One's Back Exhibition,معرض أمِّن ظهرك,https://www.youtube.com/watch?v=K75cW3L0ajc
+213,Sixth Floor Exhibition ,معرض الدور السادس,https://www.youtube.com/watch?v=adl5N-0PmRQ
+214,"Blink art exhibition, 2013 ",معرض بلينك الفني، ٢٠١٣,https://www.youtube.com/watch?v=DTO-uvnKNag
+215,Dream City 2012 Festival in Tunisia ,مهرجان دريم سيتي ٢٠١٢ بتونس,https://www.youtube.com/watch?v=mj25BA_xHHM
+216,Egypt Digital Art Festival 0.1 Exhibition ,معرض مهرجان مصر الأول للفن الرقمي,https://www.youtube.com/watch?v=n_cbFJ0k1QQ
+217,Abyusif on the balcony ,أبيوسف فى البلكونه,https://youtu.be/HmOR9fhYCSU
+218,InterLab exhibition at Medrar ,معرض الذكاء العاطفي الأصطناعي بمدرار,https://www.youtube.com/watch?v=CQozt_UtM2A
+219,"Asa7by, an exhibition by Hany Rashed ",معرض أساحبي للفنان هاني راشد,https://www.youtube.com/watch?v=AlElPw56MFo
+220,VJ Um Amel @ 100COPIES MUSIC SPACE ,ام امل فى مساحه 100 نسخة VJ,
+221,"Exercises in collective reading, Marwa Arsanios ",تمرين في القراءة الجماعية، مروة أرسنيوس,https://youtu.be/1ZX6UrzLbxs
+222,"On Photography, at Studio Viennoise",عن التصوير بستوديو فينواز,https://www.youtube.com/watch?v=MUi_bFC26JA
+223,Basiony 1978 - 2011,بسيونى 1978-2011,https://www.youtube.com/watch?v=Tw3HBHc4sPI
+224,Sharjah Biennial for Children's Art 3 ,بينالي الشارقة الثالث لفنون الطفل,https://www.youtube.com/watch?v=TQ62tQf5O48
+225,pick 5,بشاير,https://www.youtube.com/watch?v=pJ3dCIIEJp8
+226,Supermarket ,سوبر ماركت,https://www.youtube.com/watch?v=FROJ64kmNRo
+227,"Hayej, Electronic music from Tunis",هايج، موسيقى اليكترونية من تونس,https://youtu.be/Sz1mXOo0EfQ
+228,The true story of Mohannad's death- Ahmed Sabry,حقيقة مقتل مهند - أحمد صبرى,https://www.youtube.com/watch?v=nIwNv7Y48UM
+229,The Parenthesis Show,معرض ما بين الأقواس,https://www.youtube.com/watch?v=Tu5jqD9jF-I
+230,DISPLACED- Hamdy Reda,بدون عنوان - حمدى رضا,https://www.youtube.com/watch?v=0EdDwdOrhWU
+231,Giza Threads - Rana ElNemr,مسارات جيزية - رنا النمر,https://www.youtube.com/watch?v=eaF8brtRnqk
+232,Cairo Documenta 2,كايرو دوكيومنتا 2,https://www.youtube.com/watch?v=PvvZBYe4YkE
+233,"Shayma Kamel: A, B... Cartoons",شيماء كامل: أ ب كارتون,https://www.youtube.com/watch?v=skC9m6i8kTc
+234,Maspiro,ماسبيرو,https://www.youtube.com/watch?v=brkQa5FYvBw
+235,Video by the kilo,فيديو بالكيلو ,https://www.youtube.com/watch?v=vCTcSG8ORHo
+236,Indicated by Signs - Aleya Hamza,معين بالإشارات - علية حمزة,https://www.youtube.com/watch?v=aYhsldwbaFk
+237,Ahmed Sabry: El Brince TV,أحمد صبرى: تلفزيون البرنس,https://youtu.be/LwS67wcD6io
+238,Medrar TV ,مدرار,https://youtu.be/t9sJNXANEe8
+239,Goethe film week 2015 promo,,
+240,Yunus Emre corporate video,,
+241,Opening of Goethe Institut new language center,,
+242,From rags to riches documentary,,

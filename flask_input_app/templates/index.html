@@ -39,26 +39,60 @@
     <!-- <h1>Hello, {% if venue %}{{ venue }}{% else %}Stranger{% endif %}!</h1> -->
     <h1>Medrar TV Archive Input Form</h1>
 </div>
-  <form class="form form-horizontal" method="post" role="form">    
+  <form class="form-group row" method="post" role="form">    
      {{ form.hidden_tag() }}
     <div>
     {{ wtf.form_errors(form, hiddens="only") }}
+	 <div class="col-xs-2">
     {{ wtf.form_field(form.root_dir) }}
-    {{ wtf.form_field(form.event_title) }}
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div>
+    
+	 <div class="col-xs-6">
+	 {{ wtf.form_field(form.event_title) }}
+	 </div>
+	 <div class="col-xs-6">
     {{ wtf.form_field(form.event_title_ar) }}
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div>
+	 <div class="col-xs-2">
     {{ wtf.form_field(form.current_date) }}
+	</div>
+	 <div class="col-xs-2">
     {{ wtf.form_field(form.event_date) }}
-    {{ wtf.form_field(form.event_date_until) }}    
+	</div>
+	 <div class="col-xs-2">
+    {{ wtf.form_field(form.event_date_until) }}  
+     </div>	
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
     {{ wtf.form_field(form.videographer) }}
-    <p><a href="{{ url_for('add_videographer') }}" target="_blank"><button>Add Videographer</button></a></p>
+    <p><a href="{{ url_for('add_videographer') }}" target="_blank">Add Videographer</a></p>
     {{ wtf.form_field(form.venue) }}
-    <p><a href="{{ url_for('add_venue') }}" target="_blank"><button>Add Location</button></a></p>    
+    <p><a href="{{ url_for('add_venue') }}" target="_blank">Add Location</a></p>    
     </div>
     <div>
     {{ wtf.form_field(form.artists) }}
-    <p><a href={{ url_for('add_artist') }} target="_blank"><button>Add People</button></a></p>    
+    <p><a href={{ url_for('add_artist') }} target="_blank">Add People</a></p>    
     {{ wtf.form_field(form.curator) }}
     {{ wtf.form_field(form.interviewer) }}
+		 <span class="help-block">This is some help text that breaks onto a new line and may extend more than one line.</span>
+	 <br>
     {{ wtf.form_field(form.featuring) }}
     {{ wtf.form_field(form.credits) }}
     {{ wtf.form_field(form.credits_ar) }}
@@ -70,15 +104,15 @@
     {{ wtf.form_field(form.footage_desc) }}
     {{ wtf.form_field(form.footage_desc_ar) }}
     {{ wtf.form_field(form.categories) }}
-    <input type="text" id="category" value="enter a category...">
+    <input type="text" id="category" value="">
     <input type="button" value="Add Category" onclick="AddKeyword('{{ url_for("add_category") }}',$('#category').val())">
     </div>
     <div>
     {{ wtf.form_field(form.topics) }}      
-    <input type="text" id="topic" value="enter a topic...">
+    <input type="text" id="topic" value="">
     <input type="button" value="Add Topic" onclick="AddKeyword('{{ url_for("add_topic") }}',$('#topic').val())">
     {{ wtf.form_field(form.keywords) }}
-    <input type="text" id="keyword" value="enter a keyword...">
+    <input type="text" id="keyword" value="">
     <input type="button" value="Add Keyword" onclick="AddKeyword('{{ url_for("add_keyword") }}',$('#keyword').val())">
     {{ wtf.form_field(form.notes) }}
     {{ wtf.form_field(form.title_of_edited_video) }}

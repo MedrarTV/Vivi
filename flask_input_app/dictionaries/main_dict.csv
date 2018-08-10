@@ -1,2 +1,47 @@
 id,root_dir,event_title,normalized_title,event_title_ar,current_date,event_date,event_date_until,vid,vid_short,videographer,videographer_ar,ven_id,ven_short,venue,venue_ar,venue_description,venue_description_ar,cam_aud,aids,artists,artists_ar,credits,credits_ar,cids,curator,curator_ar,iids,interviewer,interviewer_ar,fids,featuring,featuring_ar,inst_ids,inst,inst_ar,event_desc,event_desc_ar,footage_desc,footage_desc_ar,catids,categories,topids,topics,kids,keywords,arch_notes,tids,titles_of_vids,titles_of_vids_ar,vids_url,directory,edited
-0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+2,F:\DS,Amriya,Amriya,عمرية,2017-12-09,2017-12-09,2017-12-23,21,MH,Mohammad Helmy,محمد حلمي,71,Medrar GC,Medrar for Contemporary Art - Garden City,مدرار للفن المعاصر بجاردن سيتي,,,C-1,['236'],Bryony Dunne,بريوني دون,With support from The Irish Embassy in Cairo,بدعم من السفارة الأيرلندية بالقاهرة,[],[],[],[],[],[],['1473'],Asem Tag,عاصم تاج,['71'],Medrar for Contemporary Art - Garden City,مدرار للفن المعاصر بجاردن سيتي,"This exhibition presents works made by Irish artist Bryony Dunne over the past four years when she lived between Egypt and her native country. In film, photography, installation and sculpture, Dunne draws together research-driven documentary projects with her own artistic interpretations.
+
+Dunne’s work examines the volatile relationship of man with nature, and often traces the thorny historical links between the two countries, Ireland and Egypt, she calls home. These links are manifested in her photography and video works from Dublin’s Natural History Museum, Cairo’s Agricultural Museum and the Giza Zoo, among other sites.
+
+During her early work in South Sinai, Dunne met a 70-year-old Bedouin woman, who lives year-round in her orchard, solo and self-sustained. One day, after weeks of repeated in-depth visits, Amriya said, “You should make a film about me and my doctors [her orchard and the mountains].” That film was made—a prologue to the other works in “Amriya”—and this solo exhibition is dedicated to her.
+
+Bryony Dunne is an Irish artist and filmmaker based in Cairo. Building on her background in documentary photography and visual anthropology, she explores the intricate and intimate relationships between humanity and the natural world. ","يقدم المعرض أعمالا للفنانة الأيرلندية  بريوني دون على مدار أربعة أعوام عاشت فيهم فى مصر وفى بلدها الأم. بالأفلام، والتصوير، والتركيب، والنحت، تصنع بريوني مشاريع وثائقية بحثية بتفسيراتها الفنية الخاصة.
+ 
+تعني أعمال بريوني بالعلاقة المضطربة بين الإنسان والطبيعة، وكثيرا ما تقتفي أثر الروابط الشائكة  بين البلدين الذين تعتبرهما موطنها. تتجلى هذه الروابط فى تصويرها وأفلامها المصورة من متحف التاريخ الطبيعى بدبلن، ومتحف القاهرة الزراعى، وحديقة حيوانات الجيزة، وأماكن أخرى.
+ 
+فى خلال بدايات عملها فى جنوب سيناء، قابلت سيدة بدوية تبلغ من العمر سبعون عاما، تعيش على مدار العام فى بستانها وحدها ومكتفية بذاتها. في يوم، بعد عدة أسابيع من الزيارات المتكررة والمتعمقة، قالت عمرية: “ينبغى أن تصنعى فيلما عنى وعن أطبائي. (بستانها والجبال المحيطة)” تم صنع الفيلم – كمقدمة للأعمال الأخرى فى “عمرية” – وهذا العرض المنفرد بمثابة إهداءً لها.
+
+بريوني دون هى فنانة وصانعة أفلام أيرلندية مقيمة فى القاهرة. بناء على خلفيتها فى التصوير التوثيقي والأنثروبولوجيا المرئية تقوم باستكشاف العلاقات المتشابكة والحميمة بين البشرية من جهة والعالم الطبيعي من جهة أخرى. ",Documentation of exhibition on opening night,توثيق للمعرض ليلة الإفتتاح,"['1', '3', '5', '6', '7', '8', '9']",exhibition;معرض;Music;موسيقى;Visual art;Photography;Video art,"['2', '3', '4', '5']",South Sinai;Agricultural Museum;zoo;nature,[],[],,[],[],[],[],F:\DS\2017;Amriya\12;Medrar for Contemporary Art - Garden City\09;\C-1,0
+3,F:\DS,Amriya 2,Amriya_2,,2018-08-12,,,1,AH,Ahmed Hany,أحمد هاني,1,100Copies,100Copies Music Space,مساحة ١٠٠ نسخة,,,C-1,['5'],Abdel Hady El Gazzar,عبد الهادي الجزار,,,[],[],[],[],[],[],[],[],[],[],[],[],,,,,[],[],[],[],[],[],,[],[],[],[],F:\DS\2018;Amriya_2\08;100Copies Music Space\12;Ahmed Hany\C-1,0
+4,F:\DS,Amriya 2 3,Amriya_2_3,,2018-01-15,,,9,EE,Esraa Elfeky,إسراء الفقي,5,ACAF,Alexandria Contemporary Arts Forum (ACAF),منتدى الإسكندرية للفنون المعاصرة,,,A-1,[],[],[],,,[],[],[],[],[],[],[],[],[],[],[],[],,,,,[],[],[],[],[],[],,[],[],[],[],F:\DS\2018;Amriya_2_3\01;Alexandria Contemporary Arts Forum (ACAF)\15;Ahmed El Saaty\A-1,0
+5,F:\DS,Amriya 2 3,Amriya_2_3,,2018-01-15,,,13,GH,Gilan Hefny,جيلان حفني,5,ACAF,Alexandria Contemporary Arts Forum (ACAF),منتدى الإسكندرية للفنون المعاصرة,,,C-1,[],[],[],,,[],[],[],[],[],[],[],[],[],[],[],[],,,,,[],[],[],[],[],[],"Our long-time partner, advisor and friend Shahidul Alam was arrested in Bangladesh earlier this week and is still in custody.
+
+Shahidul
+ has never shied away from what is right. His dedication to his 
+community, to the youth of Bangladesh, to the art of photography, and to
+ journalistic principles has not wavered, in spite of great risk to 
+himself.
+
+This
+ is not the first time he has been in danger, but the severity of the 
+current situation compels us to request your help. Please consider sharing on social media, signing a petition or contacting the Bangladesh High Commission and the Ministry of Foreign Affairs.
+
+We
+ are proud to have partnered with Shahidul since 2002. His knowledge, 
+insights, and warmth have guided our work and remain an inspiration to 
+us. Shahidul embodies what we as an organisation stand for. Please find 
+our statement below, signed together with his fellow Network Partners.
+
+Thank you for taking the time to learn about his work and support him.
+
+Kindly yours,",[],[],[],[],F:\DS\2018;Amriya_2_3\01;Alexandria Contemporary Arts Forum (ACAF)\15;Ahmed El Saaty\C-1,0
+6,F:\DS,Amriya 2 3,Amriya_2_3,,2018-01-15,,,3,AS,Ahmed Safy Eldin,أحمد صفي الدين,5,ACAF,Alexandria Contemporary Arts Forum (ACAF),منتدى الإسكندرية للفنون المعاصرة,,,C-1,[],[],[],,,[],[],[],[],[],[],[],[],[],[],[],[],,,,,[],[],[],[],[],[],,[],[],[],[],DIRECTORY ALREADY EXISTS!,0
+7,F:\DS,Amriya 2 3,Amriya_2_3,,2018-01-15,,,1,AH,Ahmed Hany,أحمد هاني,17,ASCII,ASCII Foundation for Contemporary Art Education,آسكي,,,C-2,[],[],[],,,[],[],[],[],[],[],[],[],[],[],[],[],,,,,[],[],[],[],[],[],,[],[],[],[],F:\DS\2018;Amriya_2_3\01;ASCII Foundation for Contemporary Art Education\15;Khaled Nadim\C-2,0
+8,F:\DS,Amriya 2 3,Amriya23,,2018-01-15,,,25,MNOU,Mohamed Nour,محمد نور,18,Ashkal Alwan,Lebanese Association for Plastic Arts: Ashkal Alwan,الجمعية اللبنانية للفنون التشكيلية: أشكال ألوان,,,C1,[],[],[],,,[],[],[],[],[],[],[],[],[],[],[],[],,,,,[],[],[],[],[],[],,[],[],[],[],F:\DS\2018;Amriya23\01;Beit Yakan\15;MA\C1,0
+9,F:\DS,Amriya 2 3,Amriya 2 3,,2018-01-15,,,22,MIS,Mohamed Ismail Shawky,محمد إسماعيل شوقي,5,ACAF,Alexandria Contemporary Arts Forum (ACAF),منتدى الإسكندرية للفنون المعاصرة,,,C1,[],[],[],,,[],[],[],[],[],[],[],[],[],[],[],[],,,,,[],[],[],[],[],[],,[],[],[],[],F:\DS\2018;Amriya 2 3\01;Bchira\15;ASTY\C1,0
+10,F:\DS,Amriya test,Amriya test,,2018-08-01,,,1,AH,Ahmed Hany,أحمد هاني,1,100Copies,100Copies Music Space,مساحة ١٠٠ نسخة,,,C1,[],[],[],,,[],[],[],[],[],[],[],[],[],[],[],[],,,,,[],[],[],[],[],[],,[],[],[],[],F:\DS\2018;Amriya test\08;100Copies\01;AH\C1,0
+11,F:\DS,Amriya test,Amriya test,,2018-08-01,,,2,ARD,Abdel Rahman Dnewar,عبد الرحمن دنيور,2,168 Moustafa Abo Heif,"168 Moustafa Abo Heif Street, Downtown Cairo",١٦٨ شارع مصطفى أبو هيف، وسط البلد,,,C1,[],[],[],,,[],[],[],[],[],[],[],[],[],[],[],[],,,,,[],[],[],[],[],[],,[],[],[],[],F:\DS\2018;Amriya test\08;168 Moustafa Abo Heif\01;ARD\C1,0
+12,F:\DS,Amriya test,Amriya test,,2018-08-01,,,5,ASTY,Ahmed El Saaty,أحمد الساعاتي,1,100Copies,100Copies Music Space,مساحة ١٠٠ نسخة,,,C1,[],[],[],,,[],[],[],[],[],[],[],[],[],[],[],[],,,,,[],[],[],[],[],[],,[],[],[],[],F:\DS\2018;Amriya test\08;100Copies\01;ASTY\C1,0
+13,F:\DS,Amriya test,Amriya test,,2018-08-01,,,8,DH,Dia Hamed,ضياء حامد,18,Ashkal Alwan,Lebanese Association for Plastic Arts: Ashkal Alwan,الجمعية اللبنانية للفنون التشكيلية: أشكال ألوان,,,C1,[],[],[],,,[],[],[],[],[],[],[],[],[],[],[],[],,,,,"['1', '10']","['exhibition', 'Exposition']",[],[],[],[],,['20'],['You Closed Your Eyes in Order to See the Unseen'],['أقفلت عينيك حتى تبصر اللا مرئي'],['https://www.youtube.com/watch?v=DLYVOAHo6Sc'],F:\DS\2018;Amriya test\08;Ashkal Alwan\01;DH\C1,0

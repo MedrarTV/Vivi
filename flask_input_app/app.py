@@ -7,6 +7,8 @@ import os
 from add_items import ArtistForm, VenueForm, ShooterForm, ItemForm
 from table_crud import ArchiveItems
 from utilities import Utils
+import pandas as pd
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'vtrardem'
@@ -54,6 +56,9 @@ def upload_file():
 @app.route('/', methods=['GET', 'POST'])
 def index():
     form = InputForm()
+    last_record_id = Utils.get_max_id() -1
+    last_root_dir = pd.read_csv('dictionaries/main_dict.csv').iloc[last_record_id]['root_dir']
+    form.root_dir.data = last_root_dir	
     if form.validate_on_submit():
         session['event_title'] = form.event_title.data
         session['root_dir'] = form.root_dir.data
@@ -112,11 +117,11 @@ def index():
             if Utils.verify_abs_path(path):
                 print("  # ++++TWO+++++=============")
                 rec = Utils.write_new_rec(form_dict,path)
-                print('RECCCC____ '+str(rec))
+                ##print('RECCCC____ '+str(rec))
                 if rec:
                     print("  # ++++THREE+++++=============")
                     written = Utils.write_to_dict(rec)
-                    print("WRITTEN >>> "+str(written))
+                    #print("WRITTEN >>> "+str(written))
                     if written:
                         print("  # ++++FOUR+++++=============")
                         Utils.open_folder_after_creation(path)

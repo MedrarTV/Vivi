@@ -110,7 +110,7 @@ class InputForm(FlaskForm):
 
     topics = SelectMultipleField('Topics')
 
-    cam_aud = SelectField('Camera /Audio *', choices=[('1','C-1'), ('2','C-2'), ('3','C-3'), ('4','A-1'), ('5','A-2'), ('6','A-3')] ,validators=[DataRequired()])
+    cam_aud = SelectField('Camera /Audio *', choices=[('1','C1'), ('2','C2'), ('3','C3'), ('4','A1'), ('5','A2'), ('6','A3')] ,validators=[DataRequired()])
 
     #upload_files = FileField('Upload Files', validators=[Required()])
 

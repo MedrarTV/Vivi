@@ -5,6 +5,9 @@ console.log('HER    HER HER     Her');
 
 
 function AddKeyword(itemUrl, itemVal) {
+	if(itemVal.length == 0){
+		return;
+	}
     $.ajax({
         type: "POST",
         url: itemUrl,

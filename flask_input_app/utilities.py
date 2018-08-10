@@ -12,7 +12,8 @@ class Utils():
 
     def get_valid_filename(s):
         s = str(s).strip().replace(' ', '_')
-        return re.sub(r'(?u)[^-\w.]', '', s)
+        s = re.sub(r'(?u)[^-\w.]', '', s)
+        return str(s).strip().replace('_', ' ')
 
     def verify_root_path(root_dir):
         return os.path.isdir(root_dir)
@@ -28,9 +29,9 @@ class Utils():
     def determine_cam_aud(i):
         cam_aud=''
         if i <= 3:
-            cam_aud = 'C-'+str(i)
+            cam_aud = 'C'+str(i)
         else:
-            cam_aud = 'A-'+str(i-3)
+            cam_aud = 'A'+str(i-3)
         return cam_aud
 
     def create_dir(form_dict,separator =';'):
@@ -51,14 +52,14 @@ class Utils():
             reader = csv.DictReader(f, delimiter=',')
             for item in reader:
                 if item['id'] == ven_id:
-                    venue = item['venue']
+                    venue = item['ven_short']
                     break
 
         with open('dictionaries/videographers.csv', 'r', encoding='utf-8') as f:
             reader = csv.DictReader(f, delimiter=',')
             for item in reader:
-                if item['id'] == ven_id:
-                    videographer = item['videographer']
+                if item['id'] == vid:
+                    videographer = item['vid_short']
                     break
 
         relative_path = cur_date[0:4]+separator+event_title+'\\'+cur_date[5:7]+separator+venue+'\\'+cur_date[8:10]+separator+videographer+'\\'+cam_aud
@@ -93,7 +94,7 @@ class Utils():
 
     def group_dict(ids, dict_keys=['name', 'name_ar'], dict_name='people', dicts_dir='dictionaries/', separator=';'):
 
-        dictionary = pd.read_csv(dicts_dir+dict_name+'.csv',error_bad_lines=False)
+        dictionary = pd.read_csv(dicts_dir+dict_name+'.csv')
         res_dict = dict.fromkeys(dict_keys)
 
         for key in res_dict.keys():
@@ -104,15 +105,24 @@ class Utils():
 
         for i in ids:
             i = int(i) -1
+            if i<0:
+                break
+			
+            print(i)
 
             temp_dict = dict(dictionary.iloc[i])
             for j in temp_dict.keys():
                 if j in dict_keys:
                     res_dict[j].append(temp_dict[j])
 
-        for k in res_dict.keys():
-            if res_dict[k]:
-                res_dict[k] = separator.join(list(res_dict[k]))
+        #for k in res_dict.keys():
+        #    if res_dict[k]:
+        #        res_dict[k] = separator.join(list(res_dict[k]))
+		
+        for item in res_dict:
+            if item:
+                item = separator.join(list(item))
+
 
         return res_dict
 
@@ -210,3 +220,7 @@ class Utils():
         with open('dictionaries/main_dict.csv', 'r', encoding='utf-8') as f:
             reader = csv.DictReader(f, delimiter=',')                        
             return [dict(i) for i in reader]
+	
+    def get_max_id(dict_dir = 'dictionaries/', dict_name='main_dict'):
+        max_id = (pd.read_csv(dict_dir+dict_name+'.csv').max()['id']+1).astype(int)
+        return max_id
