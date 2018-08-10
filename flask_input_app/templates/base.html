@@ -21,11 +21,16 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Medrar TV Archive</a>
+            <p class="navbar-brand">Medrar TV Archive</p>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="/">Home</a></li>
+                <li>
+                    <a href="/">Main Form</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('table_view') }}">Table View</a>
+                </li>
             </ul>
         </div>
     </div>
