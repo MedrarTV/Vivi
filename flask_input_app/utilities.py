@@ -17,7 +17,10 @@ class Utils():
         return str(s).strip().replace('_', ' ')
 
     def verify_root_path(root_dir):
-        return os.path.isdir(root_dir)
+        try:
+            return os.path.isdir(root_dir)
+        except:
+            return False
 
     ## verify whether the path is in the dictionary or not..
     def verify_abs_path(abs_path,dict_dir='dictionaries/',dict_name='main_dict'):
@@ -44,6 +47,8 @@ class Utils():
         ven_id = form_dict['ven_id']
         vid = form_dict['vid']
         cam_aud = form_dict['cam_aud']
+        unkn_date = form_dict['unkn_date']
+
         venue =''
         videographer = ''
         relative_path =''
@@ -63,8 +68,11 @@ class Utils():
                 if item['id'] == vid:
                     videographer = item['vid_short']
                     break
-
-        relative_path = cur_date[0:4]+separator+event_title+'\\'+cur_date[5:7]+separator+venue+'\\'+cur_date[8:10]+separator+videographer+'\\'+cam_aud
+        
+        if unkn_date:
+            relative_path = cur_date[0:4]+separator+event_title+'\\'+cur_date[5:7]+separator+venue+'\\'+'UNKN'+separator+videographer+'\\'+cam_aud
+        else:
+            relative_path = cur_date[0:4]+separator+event_title+'\\'+cur_date[5:7]+separator+venue+'\\'+cur_date[8:10]+separator+videographer+'\\'+cam_aud
         abs_path = ''
 
         # for testing purposes...
@@ -126,6 +134,9 @@ class Utils():
         main_dict = Utils.clone_dict(form_dict, main_dict)
         main_dict['id'] = str(max_id)        
         main_dict['normalized_title'] = Utils.get_valid_filename(main_dict['event_title'])
+
+        if form_dict['unkn_date']:
+            main_dict['current_date'] = str(main_dict['current_date'])[0:8]+'UNKN'
 
         videographer = pd.read_csv(dicts_dir+'videographers.csv')
         videographer = videographer.iloc[int(main_dict['vid'])-1]
@@ -239,6 +250,7 @@ class Utils():
         if date_str == '':
             return date_str
         else:
+            date_str = date_str.replace('UNKN', '15')
             return datetime.strptime(date_str, "%Y-%m-%d").date()
 
 
@@ -268,6 +280,9 @@ class Utils():
         item.featuring = Utils.get_codes_list(item_dict['fids'])
         item.topics = Utils.get_codes_list(item_dict['topids'])
         item.keywords = Utils.get_codes_list(item_dict['kids'])
+
+        if item_dict['current_date'].find('UNKN')>-1:
+                item.unkn_date = True
 
         cam_aud = item_dict['cam_aud']
         if cam_aud.find('C') > -1:

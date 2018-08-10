@@ -31,18 +31,24 @@ def index(itemObj = None):
     if itemObj:
         form = InputForm(obj=itemObj)
         form.populate_obj(itemObj)        
-    else:
-        form = InputForm()
+    else:        
         last_record_id = Utils.get_max_id()-1
-
         last_root_dir = pd.read_csv('dictionaries/main_dict.csv').iloc[last_record_id]['root_dir']
-        form.root_dir.data = last_root_dir
-    if form.validate_on_submit():
+        if Utils.verify_root_path(last_root_dir):
+            itemObj=ItemObject()
+            itemObj.root_dir = last_root_dir
+            form = InputForm(obj=itemObj)
+            form.populate_obj(itemObj)
+        else:
+            form = InputForm()
+
+    if form.validate_on_submit():        
         form_dict={}
         form_dict['root_dir'] = form.root_dir.data
         form_dict['event_title'] = form.event_title.data
         form_dict['event_title_ar'] = form.event_title_ar.data
         form_dict['current_date'] = form.current_date.data
+        form_dict['unkn_date'] = form.unkn_date.data
         form_dict['event_date'] = form.event_date.data
         form_dict['event_date_until'] = form.event_date_until.data
         form_dict['vid'] = form.videographer.data

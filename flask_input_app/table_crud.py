@@ -48,3 +48,4 @@ class ItemObject():
     keywords = []
     topics = []
     cam_aud = []
+    unkn_date = False

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, FileField, SelectField, TextAreaField, SelectMultipleField, TextField, SelectMultipleField, DateField
+from wtforms import StringField, SubmitField, FileField, SelectField, TextAreaField, SelectMultipleField, TextField, SelectMultipleField, DateField, BooleanField
 from wtforms.validators import Required, Length, DataRequired, Optional
 
 #from wtforms.fields.html5 import DateField
@@ -56,6 +56,8 @@ class InputForm(FlaskForm):
     event_title_ar = StringField('Event Title AR')
 
     current_date = DateField('Shooting Date *',format='%d-%m-%Y' ,validators=[DataRequired()])
+    unkn_date = BooleanField('Unknown Date')
+
     event_date = DateField('Event Date', format='%d-%m-%Y', validators=[Optional()])
     event_date_until = DateField('Until', format='%d-%m-%Y',validators=[Optional()])
 
@@ -71,8 +73,8 @@ class InputForm(FlaskForm):
     ## ONE OR MORE FIELDS
     artists = SelectMultipleField('Artists')
     
-    credits = StringField('Credits')
-    credits_ar = StringField('Credits AR')
+    credits = TextAreaField('Credits')
+    credits_ar = TextAreaField('Credits AR')
 
     ## ONE OR MORE FIELDS
     curator = SelectMultipleField('Curator / Project Manager')
@@ -105,16 +107,12 @@ class InputForm(FlaskForm):
     ## ONE OR MORE FIELDS
     # ONLY ONE COLUMN, AR AND EN
     keywords = SelectMultipleField('Keywords')
-
     topics = SelectMultipleField('Topics')
 
     cam_aud = SelectField('Camera /Audio *', choices=[('1','C1'), ('2','C2'), ('3','C3'), ('4','A1'), ('5','A2'), ('6','A3')] ,validators=[DataRequired()])
 
-    #upload_files = FileField('Upload Files', validators=[Required()])
-
     edited=None
 
-    ##name = StringField('What is your name?', id='name')
     submit = SubmitField('Submit')
 
 
