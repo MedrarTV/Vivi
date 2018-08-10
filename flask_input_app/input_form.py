@@ -22,12 +22,9 @@ class InputForm(FlaskForm):
         self.keywords.choices = self.fill_dict('keywords',['keyword'])   
         self.featuring.choices = self.fill_dict('people', ['name','categories'])
         self.topics.choices = self.fill_dict('topics',['topic'])
-        
-        #print(self.fill_dict('venues')) 
 
     def fill_dict(self,dict_name,ids=[]):
-        #choices=[(0,'')]
-        choices=[]
+        choices = [('', ' ')]
         with open('dictionaries/'+dict_name+'.csv', 'r', encoding='utf-8') as f:
             reader = csv.DictReader(f,delimiter=',')
             for item in reader:
@@ -43,7 +40,7 @@ class InputForm(FlaskForm):
                 #print(temp_vals)
                 choices.append((item['id'],temp_vals))
         return choices
-    
+
     #class variables
     keys_list = ['id', 'root_dir', 'event_title', 'normalized_title', 'event_title_ar', 'current_date', 'event_date', 'event_date_until', 'vid', 'vid_short', 'videographer', 'videographer_ar', 'ven_id', 'ven_short', 'venue', 'venue_ar', 'venue_description', 'venue_description_ar', 'cam_aud', 'aids', 'artists', 'artists_ar', 'credits', 'credits_ar', 'cids', 'curator',
                  'curator_ar', 'iids', 'interviewer', 'interviewer_ar', 'fids', 'featuring', 'featuring_ar',
@@ -66,7 +63,10 @@ class InputForm(FlaskForm):
     videographer = SelectField('Videographer *', validators=[DataRequired()])
 
     ## ONE FIELD ONLY
-    venue = SelectField('Venue *', validators=[DataRequired()])
+    venues_list = [(1,'aa'),(2,'bb'),(3,'cc'),(4,'dd'),(5,'tt'),(6,'ff')]
+
+    venue = SelectField('Venue *', validators=[DataRequired()], choices= venues_list)
+
 
     ## ONE OR MORE FIELDS
     artists = SelectMultipleField('Artists')
@@ -92,8 +92,6 @@ class InputForm(FlaskForm):
     categories = SelectMultipleField('Categories')
 
     notes = TextAreaField('Archive Notes')
-
-    old_directory = StringField('Old Directory')
 
     ## ONE OR MORE FIELDS
     interviewer = SelectMultipleField('Interviewer')

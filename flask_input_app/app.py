@@ -5,15 +5,15 @@ from input_form import InputForm
 import json
 import os
 from add_items import ArtistForm, VenueForm, ShooterForm, ItemForm
-from table_crud import ArchiveItems
+from table_crud import ArchiveItems, ItemObject
 from utilities import Utils
 import pandas as pd
+from datetime import datetime
 
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'vtrardem'
 app.config['DEBUG'] = True
-app.config['UPLOAD_FOLDER'] = 'G:\\work and courses\\Medrar\\uploading_testing\\'
 
 bootstrap = Bootstrap(app)
 
@@ -26,62 +26,17 @@ def page_not_found(e):
 def internal_server_error(e):
     return render_template('500.html'), 500
 
-
-NAMES = ["abc", "abcd", "abcde", "abcdef"]
-#NAMES = {1:"abc", 2:"abcd", 3:"abcde", 4:"abcdef"}
-
-
-@app.route('/artists', methods=['POST', 'GET'])
-def artists():
-    return Response(json.dumps(InputForm.people_dict), mimetype='application/json')
-
-@app.route('/venues_response', methods=['GET'])
-def venues_response():
-    return request.values.get('')
-
-
-@app.route('/upload', methods=['POST'])
-def upload_file():
-
-    print(app.config['UPLOAD_FOLDER'])
-    if request.method == 'POST':
-        file = request.files['file[]']
-        print(file.filename)
-        if file:
-            filename = file.filename
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            return index()
-
-
 @app.route('/', methods=['GET', 'POST'])
-def index():
-    form = InputForm()
-    last_record_id = Utils.get_max_id() -1
-    last_root_dir = pd.read_csv('dictionaries/main_dict.csv').iloc[last_record_id]['root_dir']
-    form.root_dir.data = last_root_dir	
+def index(itemObj = None):
+    if itemObj:
+        form = InputForm(obj=itemObj)
+        form.populate_obj(itemObj)        
+    else:
+        form = InputForm()
+        last_record_id = Utils.get_max_id()-1
+        last_root_dir = pd.read_csv('dictionaries/main_dict.csv').iloc[last_record_id]['root_dir']
+        form.root_dir.data = last_root_dir
     if form.validate_on_submit():
-        session['event_title'] = form.event_title.data
-        session['root_dir'] = form.root_dir.data
-        session['event_title_ar'] = form.event_title_ar.data
-        session['event_date'] = form.event_date.data
-        session['event_date_until'] = form.event_date_until.data
-        session['aids'] = form.artists.data
-        session['cids'] = form.curator.data
-        session['iids'] = form.interviewer.data
-        session['fids'] = form.featuring.data
-        session['credits'] = form.credits.data
-        session['credits_ar'] = form.credits_ar.data
-        session['inst_ids'] = form.inst.data
-        session['event_desc'] = form.event_desc.data
-        session['event_desc_ar'] = form.event_desc_ar.data
-        session['footage_desc'] = form.footage_desc.data
-        session['footage_desc_ar'] = form.footage_desc_ar.data
-        session['catids'] = form.categories.data
-        session['topids'] = form.topics.data
-        session['kids'] = form.keywords.data
-        session['arch_notes'] = form.notes.data
-        session['tids'] = form.title_of_edited_video.data
-        #session['venue'] = form.venue.data
         form_dict={}
         form_dict['root_dir'] = form.root_dir.data
         form_dict['event_title'] = form.event_title.data
@@ -139,7 +94,7 @@ def index():
                 render_template('index.html', form=form)
         else:
             flash('root directory Doesnt Exist')
-            return render_template('index.html', form=form, session=session)
+            return redirect(url_for('table_view'))
         #if not InputForm.create_dir(form_dict['root_dir']):
         #    flash('error on Root Directory')
 
@@ -174,6 +129,9 @@ def add_videographer():
         return redirect(url_for('index'))
     return render_template('add_videographer.html', form=form)
 
+@app.route('/add_video', methods=['GET','POST'])
+def add_video():
+    return "it will be added soon!"
 
 @app.route('/add_venue', methods=['GET','POST'])
 def add_venue():
@@ -192,28 +150,22 @@ def add_venue():
 @app.route('/table_view', methods=['GET'])
 def table_view():
     table_dict = Utils.view_main_dict(ArchiveItems.table_keys)
-    #print(table_dict)
     table_view = ArchiveItems(table_dict)
     table_view.border = True
     return render_template('items_table.html',table=table_view)
 
 
-@app.route('/edit_item/<id>', methods=['GET', 'POST'])
-def edit_item(id):
-    return str(ArchiveItems.get_row(int(id)-1))
-
 @app.route('/clone_item/<id>', methods=['GET', 'POST'])
 def clone_item(id):
-    row =ArchiveItems.get_row(int(id)-1)
-    print(row['root_dir'])
-    form = InputForm()
-    #form = form.populate_obj(row)
-    form.data = row
-    return render_template('index.html', form=form)
+    record_tobe_cloned = Utils.get_record_by_id(id)
+    item = Utils.populate_itemObject(record_tobe_cloned)
+    return  index(item)    
 
-@app.route('/search', methods=['GET','POST'])
-def search():
-    return "Search page is comming soon!"
+
+@app.route('/edit_item/<id>', methods=['GET', 'POST'])
+def edit_item(id):
+    return 'str(ArchiveItems.get_row(int(id)-1))'
+
 
 @app.route('/add_category',methods=['GET','POST'])
 def add_category():
@@ -241,13 +193,6 @@ def add_topic():
         ItemForm.create_single_item(topic_item, 'topics')
         print(topic_item)
         return redirect(url_for('index'))
-
-
-@app.route('/add_event_type', methods=['GET', 'POST'])
-def add_event_type():
-    return 'add event type'
-
-
 
 
 if __name__ == '__main__':

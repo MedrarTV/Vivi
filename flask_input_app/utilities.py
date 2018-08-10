@@ -4,8 +4,9 @@ import re
 import os
 import pandas as pd
 import subprocess
-import datetime
+from datetime import datetime
 from input_form import InputForm
+from table_crud import ItemObject
 
 
 class Utils():
@@ -219,8 +220,76 @@ class Utils():
     def view_main_dict(table_keys):
         with open('dictionaries/main_dict.csv', 'r', encoding='utf-8') as f:
             reader = csv.DictReader(f, delimiter=',')                        
-            return [dict(i) for i in reader]
+            main_view = [dict(i) for i in reader]
+            main_view = sorted(main_view, key = lambda x: int(x['id']), reverse=True)            
+            return main_view
 	
     def get_max_id(dict_dir = 'dictionaries/', dict_name='main_dict'):
-        max_id = (pd.read_csv(dict_dir+dict_name+'.csv').max()['id']+1).astype(int)
+        max_id = (pd.read_csv(dict_dir+dict_name+'.csv').max()['id']).astype(int)
         return max_id
+    
+    def get_record_by_id(item_id):
+        #item_id = int(item_id)
+        dict_name = 'dictionaries/main_dict.csv'
+        with open(dict_name, 'r', encoding='UTF-8') as main_file:
+            reader = csv.DictReader(main_file, delimiter=',')
+            for rec in reader:
+                if rec['id'] == str(item_id):
+                    return dict(rec)
+
+        record = pd.read_csv(dict_name).iloc[item_id].to_dict()
+        return record
+    
+    def get_codes_list(items_str):
+        items_str = items_str.replace('[', '')
+        items_str = items_str.replace(']', '')
+        codes_list = []
+        if items_str == '':
+            return codes_list
+        else:
+            codes_list = items_str.split(',')
+            for i in codes_list:
+                i = i.replace('\'','')
+                i = int(i)
+            return codes_list
+    
+    def transform_to_dateObject(date_str):
+        if date_str == '':
+            return date_str
+        else:
+            return datetime.strptime(date_str, "%Y-%m-%d").date()
+
+
+    def populate_itemObject(item_dict):
+        item = ItemObject()
+        item.root_dir = item_dict['root_dir']
+        item.event_title = item_dict['event_title']
+        item.event_title_ar = item_dict['event_title_ar']
+        item.current_date = Utils.transform_to_dateObject(item_dict['current_date'])
+        item.event_date = Utils.transform_to_dateObject(item_dict['event_date'])
+        item.event_date_until = Utils.transform_to_dateObject(
+            item_dict['event_date_until'])
+        item.videographer = Utils.get_codes_list(item_dict['vid'])        
+        item.venue = Utils.get_codes_list(item_dict['ven_id'])
+        item.artists = Utils.get_codes_list(item_dict['aids'])
+        item.credits = item_dict['credits']
+        item.credits_ar = item_dict['credits_ar']
+        item.curator = Utils.get_codes_list(item_dict['cids'])
+        item.inst = Utils.get_codes_list(item_dict['inst_ids'])
+        item.event_desc = item_dict['event_desc']
+        item.event_desc_ar = item_dict['event_desc_ar']
+        item.footage_desc = item_dict['footage_desc']
+        item.footage_desc_ar = item_dict['footage_desc_ar']
+        item.categories = Utils.get_codes_list(item_dict['catids'])
+        item.notes = item_dict['arch_notes']
+        item.interviewer = Utils.get_codes_list(item_dict['iids'])
+        item.featuring = Utils.get_codes_list(item_dict['fids'])
+        item.topics = Utils.get_codes_list(item_dict['topids'])
+        item.keywords = Utils.get_codes_list(item_dict['kids'])
+
+        cam_aud = item_dict['cam_aud']
+        if cam_aud.find('C') > -1:
+            item.cam_aud = int(cam_aud[-1])
+        else:
+            item.cam_aud = int(cam_aud[-1])+3
+        return item
