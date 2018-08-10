@@ -34,6 +34,7 @@ def index(itemObj = None):
     else:
         form = InputForm()
         last_record_id = Utils.get_max_id()-1
+
         last_root_dir = pd.read_csv('dictionaries/main_dict.csv').iloc[last_record_id]['root_dir']
         form.root_dir.data = last_root_dir
     if form.validate_on_submit():
@@ -64,40 +65,30 @@ def index(itemObj = None):
         form_dict['arch_notes'] = form.notes.data
         form_dict['tids'] = form.title_of_edited_video.data
 
-        if Utils.verify_root_path(form_dict['root_dir']):
-            print("#########++++ONE+++++=============")
+        if Utils.verify_root_path(form_dict['root_dir']):            
             path = Utils.create_dir(form_dict)
-            rec = {}
-            written = False
-            if Utils.verify_abs_path(path):
-                print("  # ++++TWO+++++=============")
-                rec = Utils.write_new_rec(form_dict,path)
-                ##print('RECCCC____ '+str(rec))
-                if rec:
-                    print("  # ++++THREE+++++=============")
-                    written = Utils.write_to_dict(rec)
-                    #print("WRITTEN >>> "+str(written))
-                    if written:
-                        print("  # ++++FOUR+++++=============")
-                        Utils.open_folder_after_creation(path)
-                        flash('written successfully!')
-                        ### the redirect to the same page till i make a new one....
-                        return redirect(url_for('index'))
+            if path is not False:
+                rec = {}
+                written = False
+                if Utils.verify_abs_path(path):                
+                    rec = Utils.write_new_rec(form_dict,path)                
+                    if rec:                    
+                        written = Utils.write_to_dict(rec)                    
+                        if written:                        
+                            Utils.open_folder_after_creation(path)
+                            flash('RECORD WRITTEN SUCCESSFULLY!!!')                        
+                            return redirect(url_for('table_view'))
+                        else:
+                            flash('An ERROR Occured During Writing, Please Delete TThe Record and Try again...')                        
                     else:
-                        flash('an error occured during writing, please attempt again...')
-                        render_template('index.html', form=form)
+                        flash('An ERROR occured During The Creation of The Record, Please Verify Your Input...')                 
                 else:
-                    flash('An ERROR occured upon creation of the record, please verify your input...')
-                    render_template('index.html', form=form)
+                    flash('The Path Already Exists in The Main Dictionary.')
             else:
-                flash('the path already exists...')
-                render_template('index.html', form=form)
+                flash('The Files Path Already Exists on The Computer.')              
         else:
-            flash('root directory Doesnt Exist')
-            return redirect(url_for('table_view'))
-        #if not InputForm.create_dir(form_dict['root_dir']):
-        #    flash('error on Root Directory')
-
+            flash('Root Directory Doesn\'t Exist.')
+            
     return render_template('index.html', form=form)
 
 

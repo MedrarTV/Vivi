@@ -19,6 +19,7 @@ class Utils():
     def verify_root_path(root_dir):
         return os.path.isdir(root_dir)
 
+    ## verify whether the path is in the dictionary or not..
     def verify_abs_path(abs_path,dict_dir='dictionaries/',dict_name='main_dict'):
         with open(dict_dir+dict_name+'.csv', encoding='utf-8') as file:
             reader = csv.DictReader(file,delimiter=',')
@@ -66,24 +67,21 @@ class Utils():
         relative_path = cur_date[0:4]+separator+event_title+'\\'+cur_date[5:7]+separator+venue+'\\'+cur_date[8:10]+separator+videographer+'\\'+cam_aud
         abs_path = ''
 
-        print("RELATIVE PATH >>>> " +relative_path)
-        print("ABSOLUTE PATH >>>> " +abs_path)
-        print("ROOT PATH >>>> " +root_dir)
+        # for testing purposes...
+        #print("RELATIVE PATH >>>> " +relative_path)
+        #print("ABSOLUTE PATH >>>> " +abs_path)
+        #print("ROOT PATH >>>> " +root_dir)
 
-        if(os.path.isdir(root_dir)):
-            try:
-                abs_path = os.path.join(root_dir, relative_path)
-                if os.path.isdir(abs_path):
-                    return "DIRECTORY ALREADY EXISTS!"
-                else:
-                    os.makedirs(abs_path)
-                    return abs_path
-            except FileExistsError as e:
-                print("the Directory Already Exists",e)
-                return e
-        else:
-            print("NO ROOT DIRECTORY")
-            return "ROOT DIRECTORY DOESN\'T EXIST!"
+        try:
+            abs_path = os.path.join(root_dir, relative_path)
+            if os.path.isdir(abs_path):
+                return False
+            else:
+                os.makedirs(abs_path)
+                return abs_path
+        except FileExistsError as e:
+            print("the Directory Already Exists",e)
+            return False
 
     def clone_dict(src,dst):
         res = dst
@@ -106,24 +104,17 @@ class Utils():
 
         for i in ids:
             i = int(i) -1
+            ## being put for some "" Expected to be "" errors
             if i<0:
-                break
-			
-            print(i)
-
+                break			
             temp_dict = dict(dictionary.iloc[i])
             for j in temp_dict.keys():
                 if j in dict_keys:
                     res_dict[j].append(temp_dict[j])
 
-        #for k in res_dict.keys():
-        #    if res_dict[k]:
-        #        res_dict[k] = separator.join(list(res_dict[k]))
-		
         for item in res_dict:
             if item:
                 item = separator.join(list(item))
-
 
         return res_dict
 
@@ -133,11 +124,8 @@ class Utils():
 
         main_dict = dict.fromkeys(keys_list)
         main_dict = Utils.clone_dict(form_dict, main_dict)
-        main_dict['id'] = str(max_id)
-        print('****************************'+main_dict['id']+'///////-----')
+        main_dict['id'] = str(max_id)        
         main_dict['normalized_title'] = Utils.get_valid_filename(main_dict['event_title'])
-
-        print("  # ++++WRRRRRR ONE+++++=============")
 
         videographer = pd.read_csv(dicts_dir+'videographers.csv')
         videographer = videographer.iloc[int(main_dict['vid'])-1]
@@ -145,25 +133,21 @@ class Utils():
         main_dict['videographer'] = dict(videographer)['videographer']
         main_dict['videographer_ar'] = dict(videographer)['videographer_ar']
 
-        print("  # ++++WRRRRRR TWO+++++=============")
 
         venue = pd.read_csv(dicts_dir+'venues.csv')
         venue = dict(venue.iloc[int(main_dict['ven_id'])-1])
-        main_dict = Utils.clone_dict(venue, main_dict)
-
-        print("  # ++++WRRRRRR THREE+++++=============")
+        main_dict = Utils.clone_dict(venue, main_dict)        
 
         main_dict['cam_aud'] = Utils.determine_cam_aud(int(main_dict['cam_aud']))
 
-        print("}}}}}}} AIDS LIST }}}}}}}}} "+str(list(main_dict['aids'])))
-        print("}}}}}}} CIDS LIST }}}}}}}}} "+str(main_dict['cids']))
+        #for testing purposes...
+        #print("}}}}}}} AIDS LIST }}}}}}}}} "+str(list(main_dict['aids'])))
+        #print("}}}}}}} CIDS LIST }}}}}}}}} "+str(main_dict['cids']))
 
         artists = Utils.group_dict(list(main_dict['aids']))
         curators = Utils.group_dict(list(main_dict['cids']))
         interviewers = Utils.group_dict(list(main_dict['iids']))
         featuring = Utils.group_dict(list(main_dict['fids']))
-
-        print("  # ++++WRRRRRR FOUR+++++=============")
 
         main_dict['artists'] = artists['name']
         main_dict['artists_ar'] = artists['name_ar']
@@ -172,28 +156,22 @@ class Utils():
         main_dict['interviewer'] = interviewers['name']
         main_dict['interviewer_ar'] = interviewers['name_ar']
         main_dict['featuring'] = featuring['name']
-        main_dict['featuring_ar'] = featuring['name_ar']
+        main_dict['featuring_ar'] = featuring['name_ar']        
 
-        print("  # ++++WRRRRRR FIVE+++++=============")
+        institutions = Utils.group_dict(list(main_dict['inst_ids']),['venue','venue_ar'],'venues')
 
-        venues = Utils.group_dict(list(main_dict['inst_ids']),['venue','venue_ar'],'venues')
-
-        main_dict['inst'] = venues['venue']
-        main_dict['inst_ar'] = venues['venue_ar']
+        main_dict['inst'] = institutions['venue']
+        main_dict['inst_ar'] = institutions['venue_ar']
 
         main_dict['categories'] = Utils.group_dict(list(main_dict['catids']), ['category'], 'categories')['category']
         main_dict['keywords'] = Utils.group_dict(list(main_dict['kids']), ['keyword'], 'keywords')['keyword']
-        main_dict['topics'] = Utils.group_dict(list(main_dict['topids']), ['topic'], 'topics')['topic']
-
-        print("  # ++++WRRRRRR SIX+++++=============")
+        main_dict['topics'] = Utils.group_dict(list(main_dict['topids']), ['topic'], 'topics')['topic']        
 
         edited_videos = Utils.group_dict(list(main_dict['tids']), ['title', 'title_ar', 'url'], 'title_of_edited_videos')
 
         main_dict['titles_of_vids'] = edited_videos['title']
         main_dict['titles_of_vids_ar'] = edited_videos['title_ar']
-        main_dict['vids_url'] = edited_videos['url']
-
-        print("  # ++++WRRRRRR SEVEN+++++=============")
+        main_dict['vids_url'] = edited_videos['url']        
 
         main_dict['directory'] = directory
         main_dict['edited']= edited
@@ -201,19 +179,23 @@ class Utils():
         return main_dict
 
     def write_to_dict(rec, keys_list=InputForm.keys_list, dict_name='main_dict', dicts_dir='dictionaries/'):
-        print('//////////*****'+rec['id']+'****/////////////')
         with open(dicts_dir+dict_name+'.csv', 'a', encoding='utf-8', newline='') as file:
             writer = csv.DictWriter(file,keys_list)
             try:
                 writer.writerow(rec)
                 return True
             except IOError as e:
-                print('ERROR >>>> ',e)
+                print('FILE WRITING ERROR >>>> ',e)
+                return False
 
     def open_folder_after_creation(dir):
         try:
-            subprocess.Popen('explorer '+dir)
-            return True
+            if os.name == 'posix':                
+                subprocess.Popen('xdg-open "%s"' % dir)
+                return True
+            else:            
+                subprocess.Popen('explorer '+dir)
+                return True
         except Exception as e:
             print('ERROR >>>> ', e)
     
