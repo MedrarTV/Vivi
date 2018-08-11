@@ -30,7 +30,8 @@ def internal_server_error(e):
 def index(itemObj = None):
     if itemObj:
         form = InputForm(obj=itemObj)
-        form.populate_obj(itemObj)        
+        form.populate_obj(itemObj)
+        print(form.artists.data)      
     else:        
         last_record_id = Utils.get_max_id()-1
         last_root_dir = pd.read_csv('dictionaries/main_dict.csv').iloc[last_record_id]['root_dir']
@@ -156,6 +157,7 @@ def table_view():
 def clone_item(id):
     record_tobe_cloned = Utils.get_record_by_id(id)
     item = Utils.populate_itemObject(record_tobe_cloned)
+    ##print(item.artists)
     return  index(item)    
 
 

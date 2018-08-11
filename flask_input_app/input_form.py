@@ -24,7 +24,7 @@ class InputForm(FlaskForm):
         self.topics.choices = self.fill_dict('topics',['topic'])
 
     def fill_dict(self,dict_name,ids=[]):
-        choices = [('', ' ')]
+        choices = [(None, '')]
         with open('dictionaries/'+dict_name+'.csv', 'r', encoding='utf-8') as f:
             reader = csv.DictReader(f,delimiter=',')
             for item in reader:
@@ -37,7 +37,6 @@ class InputForm(FlaskForm):
                         temp_vals += item[k]
                         if(len(ids)>1):
                             temp_vals += ' | '
-                #print(temp_vals)
                 choices.append((item['id'],temp_vals))
         return choices
 

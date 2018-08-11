@@ -233,17 +233,21 @@ class Utils():
         record = pd.read_csv(dict_name).iloc[item_id].to_dict()
         return record
     
-    def get_codes_list(items_str):
+    def get_codes_list(items_str, isLocOrVen = False):
         items_str = items_str.replace('[', '')
         items_str = items_str.replace(']', '')
+        items_str = items_str.replace('\'', '')
+        items_str = items_str.replace('"', '')
+        items_str = items_str.replace(' ', '')
         codes_list = []
         if items_str == '':
             return codes_list
         else:
             codes_list = items_str.split(',')
             for i in codes_list:
-                i = i.replace('\'','')
-                i = int(i)
+                i = i.strip()
+                if isLocOrVen == True:
+                    return i            
             return codes_list
     
     def transform_to_dateObject(date_str):
@@ -263,9 +267,10 @@ class Utils():
         item.event_date = Utils.transform_to_dateObject(item_dict['event_date'])
         item.event_date_until = Utils.transform_to_dateObject(
             item_dict['event_date_until'])
-        item.videographer = Utils.get_codes_list(item_dict['vid'])        
-        item.venue = Utils.get_codes_list(item_dict['ven_id'])
+        item.videographer = Utils.get_codes_list(item_dict['vid'], True)        
+        item.venue = Utils.get_codes_list(item_dict['ven_id'],True)
         item.artists = Utils.get_codes_list(item_dict['aids'])
+        item.artists = ['1','2','100']
         item.credits = item_dict['credits']
         item.credits_ar = item_dict['credits_ar']
         item.curator = Utils.get_codes_list(item_dict['cids'])
