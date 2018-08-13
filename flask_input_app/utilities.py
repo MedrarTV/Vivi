@@ -86,7 +86,7 @@ class Utils():
                 return False
             else:
                 os.makedirs(abs_path)
-                return abs_path
+                return {'relative_path':relative_path, 'abs_path': abs_path}
         except FileExistsError as e:
             print("the Directory Already Exists",e)
             return False
@@ -285,7 +285,7 @@ class Utils():
         item.featuring = Utils.get_codes_list(item_dict['fids'])
         item.topics = Utils.get_codes_list(item_dict['topids'])
         item.keywords = Utils.get_codes_list(item_dict['kids'])
-
+        item.title_of_edited_video = Utils.get_codes_list(item_dict['tids'])
         if item_dict['current_date'].find('UNKN')>-1:
                 item.unkn_date = True
 
