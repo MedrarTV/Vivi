@@ -269,8 +269,7 @@ class Utils():
             item_dict['event_date_until'])
         item.videographer = Utils.get_codes_list(item_dict['vid'], True)        
         item.venue = Utils.get_codes_list(item_dict['ven_id'],True)
-        item.artists = Utils.get_codes_list(item_dict['aids'])
-        item.artists = ['1','2','100']
+        item.artists = Utils.get_codes_list(item_dict['aids'])        
         item.credits = item_dict['credits']
         item.credits_ar = item_dict['credits_ar']
         item.curator = Utils.get_codes_list(item_dict['cids'])
