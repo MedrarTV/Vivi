@@ -72,9 +72,9 @@ class VenueForm(FlaskForm):
             writer.writerow([str(int(venue_id)+1), venue_short, venue, description, description_ar, website])
         return int(venue_id)+1
 
-    venue_short = StringField('Short Name *', validators=[Required()])
+    venue_short = StringField('Short Name *', validators=[Required(), Length(max=50)])
     venue = StringField('Institution/Venue/location Name *',
-                        validators=[DataRequired(), Length(max=50)])
+                        validators=[DataRequired()])
     venue_ar = StringField('إسم المؤسسة/المساحة/الموقع *', validators=[DataRequired()])
     description = StringField('Description')
     description_ar = StringField('وصف المؤسسة أو المكان')

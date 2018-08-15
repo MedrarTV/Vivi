@@ -285,7 +285,7 @@ class Utils():
         item.featuring = Utils.get_codes_list(item_dict['fids'])
         item.topics = Utils.get_codes_list(item_dict['topids'])
         item.keywords = Utils.get_codes_list(item_dict['kids'])
-
+        item.title_of_edited_video = Utils.get_codes_list(item_dict['tids'])
         if item_dict['current_date'].find('UNKN')>-1:
                 item.unkn_date = True
 

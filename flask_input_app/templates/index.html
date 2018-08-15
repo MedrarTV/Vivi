@@ -82,41 +82,121 @@
 	<br>
 	<br>
 	<br>
-    {{ wtf.form_field(form.videographer) }}
-    <p><a href="{{ url_for('add_videographer') }}" target="_blank">Add Videographer</a></p>
-    {{ wtf.form_field(form.venue) }}
+	 <div class="col-xs-4">
+	 {{ wtf.form_field(form.venue) }}
     <p><a href="{{ url_for('add_venue') }}" target="_blank">Add Location</a></p>    
     </div>
-    <div>
-    {{ wtf.form_field(form.artists) }}
-    <p><a href={{ url_for('add_artist') }} target="_blank">Add People</a></p>    
-    {{ wtf.form_field(form.curator) }}
-    {{ wtf.form_field(form.interviewer) }}
-		 <span class="help-block">This is some help text that breaks onto a new line and may extend more than one line.</span>
+	
+	 <div class="col-xs-2">
+    {{ wtf.form_field(form.videographer) }}
+	 <p><a href="{{ url_for('add_videographer') }}" target="_blank">Add Videographer</a></p>
+	</div>
+	<br>
 	 <br>
+	 <br>
+	 <br>
+	 <br>
+	 <br>
+		 	 <div class="col-xs-3">
+    {{ wtf.form_field(form.interviewer) }}
+		 <span class="help-block">Only if we see or hear her/him in vid/Aud</span>
+		  </div>
+	
+	 	 <div class="col-xs-4">
     {{ wtf.form_field(form.featuring) }}
-    {{ wtf.form_field(form.credits) }}
+			 <span class="help-block">who do you see speaking to the camera or being inteviewed?</span>
+			  </div>
+	 <br>
+	 <br>
+	 <br>
+	 <br>
+	 <br>
+	 <br>
+	 <br>
+	 <br>
+	
+    <div class="col-xs-5">
+     {{ wtf.form_field(form.curator) }}
+	 <span class="help-block">Or Producer / Director of event or venue</span>
+	 </div>
+	  <br>
+	 <br>
+	 <br>
+	 <br>
+	 <br>
+	 <br>
+	 <br>
+
+    <div>
+	
+	    {{ wtf.form_field(form.credits) }}
+		<span class="help-block">Best is to Copy/Paste from the original official announcment of the event</span>
     {{ wtf.form_field(form.credits_ar) }}
+	
+    {{ wtf.form_field(form.artists) }}
+	<span class="help-block">Only people participating in the creative process as understood from the official credits and who's work appears in the footage</span>
+			  </div>
+    <p><a href={{ url_for('add_artist') }} target="_blank">Add People</a></p>    
+  
+     <br>
+	 <br>
     </div>
     <div>
-    {{ wtf.form_field(form.inst) }}
+
     {{ wtf.form_field(form.event_desc) }}
+	<span class="help-block">Best is to Copy/Paste from the original official announcment of the event</span>
     {{ wtf.form_field(form.event_desc_ar) }}
-    {{ wtf.form_field(form.footage_desc) }}
-    {{ wtf.form_field(form.footage_desc_ar) }}
+	
+     {{ wtf.form_field(form.inst) }}
+	<span class="help-block">Or organizing initiatives / Funding entities as mentioned in official announcement</span>
+	 <br>
+	 <br>
+	 <br>
+	
+	<div class="col-xs-3">
     {{ wtf.form_field(form.categories) }}
-    <input type="text" id="category" value="">
+	<span class="help-block">Type of event or occasion of shooting</span>
+	  <input type="text" id="category" value="">
     <input type="button" value="Add Category" onclick="AddKeyword('{{ url_for("add_category") }}',$('#category').val())">
     </div>
+	</div>
+  
     <div>
-    {{ wtf.form_field(form.topics) }}      
+	<div class="col-xs-3">
+    {{ wtf.form_field(form.topics) }}  
+<span class="help-block">General concepts or ideas expressed in the artwork or conversation</span>    
     <input type="text" id="topic" value="">
     <input type="button" value="Add Topic" onclick="AddKeyword('{{ url_for("add_topic") }}',$('#topic').val())">
+	</div>
+
+	 <div class="col-xs-3">
     {{ wtf.form_field(form.keywords) }}
+	<span class="help-block">Almost like footage description - describe important or special elements that we see or hear in the footage</span>
     <input type="text" id="keyword" value="">
     <input type="button" value="Add Keyword" onclick="AddKeyword('{{ url_for("add_keyword") }}',$('#keyword').val())">
+	</div>
+	 <br>
+	 <br>
+	 <br>
+	 <br>
+	 <br>
+	 <br>
+	 <br>
+	 <br>
+	 <br>
+	 <br>
+	 <br>
+	
+	   {{ wtf.form_field(form.footage_desc) }}
+	<span class="help-block">Please explain in detail every info you know about this footage that was not expressed in the fields above</span>
+
+    {{ wtf.form_field(form.footage_desc_ar) }}
+		<br>
     {{ wtf.form_field(form.notes) }}
+	<span class="help-block">for internal use only, plz indicate missing data or special decisions you took while filling this form</span>
+		<br>
     {{ wtf.form_field(form.title_of_edited_video) }}
+
     </div>
     {{ wtf.form_field(form.cam_aud)}}
     

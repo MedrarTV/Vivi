@@ -55,7 +55,7 @@ class InputForm(FlaskForm):
     event_title_ar = StringField('Event Title AR')
 
     current_date = DateField('Shooting Date *',format='%d-%m-%Y' ,validators=[DataRequired()])
-    unkn_date = BooleanField('Unknown Date')
+    unkn_date = BooleanField('Unknown shooting day')
 
     event_date = DateField('Event Date', format='%d-%m-%Y', validators=[Optional()])
     event_date_until = DateField('Until', format='%d-%m-%Y',validators=[Optional()])
@@ -72,14 +72,14 @@ class InputForm(FlaskForm):
     ## ONE OR MORE FIELDS
     artists = SelectMultipleField('Artists')
     
-    credits = TextAreaField('Credits')
+    credits = TextAreaField('Credits "Artists with their roles when applicable"')
     credits_ar = TextAreaField('Credits AR')
 
     ## ONE OR MORE FIELDS
     curator = SelectMultipleField('Curator / Project Manager')
 
     ## ONE OR MORE FIELDS
-    inst = SelectMultipleField('Institution')
+    inst = SelectMultipleField('Institutions involved')
 
 
     event_desc = TextAreaField('Event Description')
@@ -92,16 +92,16 @@ class InputForm(FlaskForm):
     # ONLY ONE COLUMN, AR AND EN
     categories = SelectMultipleField('Categories')
 
-    notes = TextAreaField('Archive Notes')
+    notes = TextAreaField('Archiving Notes')
 
     ## ONE OR MORE FIELDS
     interviewer = SelectMultipleField('Interviewer')
 
     ## ONE OR MORE FIELDS
-    featuring = SelectMultipleField('Featuring')
+    featuring = SelectMultipleField('Featured people')
 
     ## ONE OR MORE FIELDS
-    title_of_edited_video = SelectMultipleField('Title of the Edited Video')
+    title_of_edited_video = SelectMultipleField('Title of the released online Video')
 
     ## ONE OR MORE FIELDS
     # ONLY ONE COLUMN, AR AND EN
