@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block scripts %}
+{{ super() }}
+    <script type="text/javascript" src="../static/auto_complete.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        //$("#venue").select2();
+        $("#artists").select2();        
+        $("#curator").select2();
+        $("#inst").select2();
+        //$("#videographer").select2();
+        $("#categories").select2();        
+        $("#interviewer").select2();
+        $("#title_of_edited_video").select2();
+        $("#keywords").select2({
+          allowClear: true          
+        });
+        $("#featuring").select2();
+        $("#topics").select2();      
+        $('#current_date').datepicker({
+          dateFormat: 'dd-mm-yy'
+        });
+        $('#event_date').datepicker({
+          dateFormat: 'dd-mm-yy'
+        });
+        $('#event_date_until').datepicker({
+          dateFormat: 'dd-mm-yy'
+        });
+        $("#unkn_date").click(function () { return false; });
+      });       
+    </script>
+{% endblock %}
+
+{% block title %}Medrar TV Archive{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <!-- <h1>Hello, {% if venue %}{{ venue }}{% else %}Stranger{% endif %}!</h1> -->
+    <h1>Medrar TV Archive Input Form</h1>
+</div>
+  <form class="form-group row" method="post" role="form">    
+     {{ form.hidden_tag() }}
+    <div>
+    {{ wtf.form_errors(form, hiddens="only") }}
+	 <div class="col-xs-2">
+    {{ wtf.form_field(form.root_dir) }}
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div>
+    
+	 <div class="col-xs-6">
+	 {{ wtf.form_field(form.event_title, readonly=True) }}
+	 </div>
+	 <div class="col-xs-6">
+    {{ wtf.form_field(form.event_title_ar) }}
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div>
+	 <div class="col-xs-2">
+    {{ wtf.form_field(form.current_date, readonly=True, disabled=True) }}
+    {{ wtf.form_field(form.unkn_date) }}
+	</div>
+	 <div class="col-xs-2">
+    {{ wtf.form_field(form.event_date) }}
+	</div>
+	 <div class="col-xs-2">
+    {{ wtf.form_field(form.event_date_until) }}  
+     </div>	
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+    {{ wtf.form_field(form.videographer, readonly=True, disabled=True) }}
+    <p><a href="{{ url_for('add_videographer') }}" target="_blank">Add Videographer</a></p>
+    {{ wtf.form_field(form.venue, readonly=True, disabled=True) }}
+    <p><a href="{{ url_for('add_venue') }}" target="_blank">Add Location</a></p>    
+    </div>
+    <div>
+    {{ wtf.form_field(form.artists) }}
+    <p><a href={{ url_for('add_artist') }} target="_blank">Add People</a></p>    
+    {{ wtf.form_field(form.curator) }}
+    {{ wtf.form_field(form.interviewer) }}
+		 <span class="help-block">This is some help text that breaks onto a new line and may extend more than one line.</span>
+	 <br>
+    {{ wtf.form_field(form.featuring) }}
+    {{ wtf.form_field(form.credits) }}
+    {{ wtf.form_field(form.credits_ar) }}
+    </div>
+    <div>
+    {{ wtf.form_field(form.inst) }}
+    {{ wtf.form_field(form.event_desc) }}
+    {{ wtf.form_field(form.event_desc_ar) }}
+    {{ wtf.form_field(form.footage_desc) }}
+    {{ wtf.form_field(form.footage_desc_ar) }}
+    {{ wtf.form_field(form.categories) }}
+    <input type="text" id="category" value="">
+    <input type="button" value="Add Category" onclick="AddKeyword('{{ url_for("add_category") }}',$('#category').val())">
+    </div>
+    <div>
+    {{ wtf.form_field(form.topics) }}      
+    <input type="text" id="topic" value="">
+    <input type="button" value="Add Topic" onclick="AddKeyword('{{ url_for("add_topic") }}',$('#topic').val())">
+    {{ wtf.form_field(form.keywords) }}
+    <input type="text" id="keyword" value="">
+    <input type="button" value="Add Keyword" onclick="AddKeyword('{{ url_for("add_keyword") }}',$('#keyword').val())">
+    {{ wtf.form_field(form.notes) }}
+    {{ wtf.form_field(form.title_of_edited_video) }}
+    </div>
+    {{ wtf.form_field(form.cam_aud, readonly=True, disabled=True)}}
+    
+    {{wtf.form_field(form.submit)}}
+  </form>
+
+{% endblock %}

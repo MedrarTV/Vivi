@@ -30,8 +30,7 @@ def internal_server_error(e):
 def index(itemObj = None):
     if itemObj:
         form = InputForm(obj=itemObj)
-        form.populate_obj(itemObj)
-        print(form.artists.data)      
+        form.populate_obj(itemObj)       
     else:        
         last_record_id = Utils.get_max_id()-1
         last_root_dir = pd.read_csv('dictionaries/main_dict.csv').iloc[last_record_id]['root_dir']
@@ -39,7 +38,7 @@ def index(itemObj = None):
             itemObj=ItemObject()
             itemObj.root_dir = last_root_dir
             form = InputForm(obj=itemObj)
-            form.populate_obj(itemObj)
+            form.populate_obj(itemObj)            
         else:
             form = InputForm()
 
@@ -77,12 +76,12 @@ def index(itemObj = None):
             if path is not False:
                 rec = {}
                 written = False
-                if Utils.verify_abs_path(path):                
-                    rec = Utils.write_new_rec(form_dict,path)                
+                if Utils.verify_abs_path(path['relative_path']):                
+                    rec = Utils.write_new_rec(form_dict,path['relative_path'])                
                     if rec:                    
                         written = Utils.write_to_dict(rec)                    
                         if written:                        
-                            Utils.open_folder_after_creation(path)
+                            Utils.open_folder_after_creation(path['abs_path'])
                             flash('RECORD WRITTEN SUCCESSFULLY!!!')                        
                             return redirect(url_for('table_view'))
                         else:
@@ -157,13 +156,47 @@ def table_view():
 def clone_item(id):
     record_tobe_cloned = Utils.get_record_by_id(id)
     item = Utils.populate_itemObject(record_tobe_cloned)
-    ##print(item.artists)
     return  index(item)    
 
 
 @app.route('/edit_item/<id>', methods=['GET', 'POST'])
 def edit_item(id):
-    return 'str(ArchiveItems.get_row(int(id)-1))'
+    record_tobe_edited = Utils.get_record_by_id(id)
+    item = Utils.populate_itemObject(record_tobe_edited)
+    edit_form = InputForm(obj=item)
+    edit_form.populate_obj(item)
+
+    if edit_form.validate_on_submit():
+        edit_form_dict = {}
+        edit_form_dict['root_dir'] = edit_form.root_dir.data
+        edit_form_dict['event_title'] = edit_form.event_title.data
+        edit_form_dict['event_title_ar'] = edit_form.event_title_ar.data
+        edit_form_dict['current_date'] = edit_form.current_date.data
+        edit_form_dict['unkn_date'] = edit_form.unkn_date.data
+        edit_form_dict['event_date'] = edit_form.event_date.data
+        edit_form_dict['event_date_until'] = edit_form.event_date_until.data
+        edit_form_dict['vid'] = edit_form.videographer.data
+        edit_form_dict['ven_id'] = edit_form.venue.data
+        edit_form_dict['cam_aud'] = edit_form.cam_aud.data
+        edit_form_dict['aids'] = edit_form.artists.data
+        edit_form_dict['cids'] = edit_form.curator.data
+        edit_form_dict['iids'] = edit_form.interviewer.data
+        edit_form_dict['fids'] = edit_form.featuring.data
+        edit_form_dict['credits'] = edit_form.credits.data
+        edit_form_dict['credits_ar'] = edit_form.credits_ar.data
+        edit_form_dict['inst_ids'] = edit_form.inst.data
+        edit_form_dict['event_desc'] = edit_form.event_desc.data
+        edit_form_dict['event_desc_ar'] = edit_form.event_desc_ar.data
+        edit_form_dict['footage_desc'] = edit_form.footage_desc.data
+        edit_form_dict['footage_desc_ar'] = edit_form.footage_desc_ar.data
+        edit_form_dict['catids'] = edit_form.categories.data
+        edit_form_dict['topids'] = edit_form.topics.data
+        edit_form_dict['kids'] = edit_form.keywords.data
+        edit_form_dict['arch_notes'] = edit_form.notes.data
+        edit_form_dict['tids'] = edit_form.title_of_edited_video.data
+
+        print(str(edit_form_dict))
+    return render_template('edit_record.html', form=edit_form)
 
 
 @app.route('/add_category',methods=['GET','POST'])
